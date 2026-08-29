@@ -1,5 +1,49 @@
 # Changelog
 
+## Unreleased — Reader-first methodology
+
+Completed the migration from the research-oriented SSAD structure to one active reader-first methodology tree.
+
+### Added
+
+- `01-foundation/` — core SSAD principles;
+- `02-workflow/` — real system-analyst delivery workflow;
+- `03-analysis/` — boundaries, responsibilities, ownership, local models and cross-boundary analysis;
+- `04-knowledge-structure/` — canonical ownership, hierarchy, links and progressive depth;
+- `05-collaboration/` — contribution, validation, decision resolution and feedback loops;
+- `06-change/` — impact analysis, compatibility and selective reopening;
+- `07-practice/` — task-based daily checklists;
+- `08-examples/` — real-world Aveli validation slices.
+
+### Removed
+
+The following migration-era top-level documentation trees were removed after their useful concepts were absorbed into the reader-first structure:
+
+```text
+applications/
+cases/
+decisions/
+examples/
+playbooks/
+proposals/
+specification/
+templates/
+workflow/
+```
+
+Also removed:
+
+- `REPOSITORY-SETUP.md` — early bootstrap notes no longer needed by readers;
+- empty `LICENSE.txt` — licensing has not yet been selected, so a zero-byte license was misleading.
+
+`assets/` remains as supporting diagram infrastructure.
+
+### Principle
+
+> Historical documentation belongs in Git history once it has been superseded. The active tree should contain only current knowledge.
+
+---
+
 ## v0.3.0 — Operational Playbooks
 
 Introduced the first practical task-oriented guidance layer over the SSAD workflow.
@@ -23,13 +67,13 @@ Introduced the first practical task-oriented guidance layer over the SSAD workfl
 ### Changed
 
 - `playbooks/README.*` promoted from a placeholder to an operational entry point;
-- root README now includes a playbook chooser;
-- methodology specification now distinguishes the normative workflow from operational playbooks;
-- current maturity updated to `v0.3.0`.
+- root README included a playbook chooser;
+- methodology specification distinguished the normative workflow from operational playbooks;
+- current maturity was updated to `v0.3.0`.
 
 ### Design Decision
 
-The methodology deliberately starts with three core playbooks:
+The methodology deliberately started with three core playbooks:
 
 ```text
 new system
@@ -37,7 +81,7 @@ existing system
 change
 ```
 
-Integration changes, architecture changes, technology replacements, migrations, and provider changes are treated as branches until real-world applications demonstrate that their work dependency structure is materially different.
+Integration changes, architecture changes, technology replacements, migrations, and provider changes were treated as branches until real-world applications could demonstrate that their work dependency structure was materially different.
 
 ### Methodology Principle Reinforced
 
