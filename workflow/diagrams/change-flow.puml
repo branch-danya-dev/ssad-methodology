@@ -1,0 +1,21 @@
+@startuml
+title SSAD — Change Analysis Workflow
+
+start
+:Define Change Request;
+:Build Change Surface;
+:Check Boundary and Ownership Impact;
+:Check Data and Interface Impact;
+:Check Component and Technology Impact;
+:Check Trust / Failure / Recovery Impact;
+:Update Acceptance and Traceability;
+:Verify affected knowledge;
+
+if (Unknown or contradiction remains?) then (yes)
+  :Classify OPEN or revisit upstream decision;
+else (no)
+  :Restore Stable state;
+endif
+
+stop
+@enduml
