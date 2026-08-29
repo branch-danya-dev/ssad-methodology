@@ -2,58 +2,155 @@
 
 [Русская версия](README.ru.md)
 
-Review is the stage where the solution is checked by **the combined competencies of the team**, not only by the analyst.
+Review is the stage where the analytical model is **challenged by the people who hold different pieces of system knowledge**.
 
-Main question:
+It is not a spelling pass, a ritual approval, or a terminal gate after which the analysis becomes untouchable.
 
-> Which errors, assumptions and contradictions become visible when business, architecture, development, QA and integration owners inspect the solution from their own perspectives?
+> **Review tests whether the proposed system model survives other system perspectives.**
 
-## Review focus
+## Main question
 
-Different participants validate different knowledge:
+> Is the proposed behavior and system design correct, consistent, implementable and verifiable from the perspectives that matter for this change?
 
-| Participant | Main focus |
+## Input
+
+Review usually starts with:
+
+- requirements and constraints;
+- the relevant Analysis & Design model;
+- the delivery specification;
+- affected ownership and dependencies;
+- contracts, states, data and flows;
+- failure and compatibility behavior;
+- acceptance conditions;
+- known assumptions and open questions.
+
+## Who should review
+
+Do not invite everyone by default.
+
+Reviewer selection follows the **affected knowledge and ownership**.
+
+| Perspective | Typical review question |
 |---|---|
-| Product / Business | intent and expected behavior |
-| System Analyst | logical completeness, boundaries, ownership, traceability |
-| Architect | dependencies and architectural constraints |
-| Developer | feasibility and implementation evidence |
-| QA | ambiguity, edge cases and verifiability |
-| Integration owner | external contract and provider limitations |
-| Security / Operations | trust, security and operational constraints |
+| Product / Business | Did we understand the problem and intended behavior correctly? |
+| Architecture | Are boundaries, responsibilities and dependencies valid? |
+| Development | Is the solution implementable and compatible with current implementation evidence? |
+| QA | Is behavior unambiguous, testable and complete for edge/negative scenarios? |
+| Integration owner | Are contract semantics, ownership and external constraints correct? |
+| Security / Operations | Are trust, failure, observability and operational behavior acceptable? |
+| SA peer | Are there logical gaps, contradictions or unclear ownership? |
 
-Reviewers are selected from the Change Surface; not every task needs every role.
+The important question is not “who must always attend?” but:
 
-## Method
+> **Which perspectives can invalidate a meaningful claim in this change?**
 
-1. Determine which responsibilities are affected and therefore which reviewers are needed.
-2. Start with problem, scope, affected owners and key decisions before deep technical details.
-3. Review in order: intent → boundaries/ownership → behavior → contracts/data/states → failures → acceptance.
-4. Classify feedback as preference, question, contradiction, new evidence or blocking issue.
-5. When a decision changes, update canonical system knowledge rather than only resolving a comment thread.
+## How review works in SSAD
 
-```mermaid
-graph TD
-    S[Specification] --> R[Review]
-    R --> E[New evidence]
-    E --> A[Reopen analysis]
-    A --> U[Update canonical knowledge]
-    U --> R2[Review again]
-```
-
-## Aveli example
-
-If a specification says an offline snapshot is valid for 72 hours, but backend review shows that the server already returns `recheckAt`, this is new ownership evidence. The model should become:
+A comment is not merely text feedback. It may be new evidence about the system.
 
 ```text
-Backend owns recheck deadline
-→ Frontend consumes recheckAt
-→ 72 hours is fallback only
-→ trust rules and acceptance are updated
+Specification
+     ↓
+Review
+     ├─ clarification → Specification
+     ├─ missing requirement → Requirements
+     ├─ design contradiction → Analysis & Design
+     ├─ new implementation fact → affected canonical knowledge
+     └─ validated solution → Grooming
+```
+
+```mermaid
+flowchart TD
+    S[Specification] --> R[Review]
+    R -. new requirement .-> Q[Requirements]
+    R -. design issue .-> A[Analysis & Design]
+    R -. clarification .-> S
+    R --> G[Grooming]
+```
+
+This feedback loop is normal. Returning upstream means the review worked.
+
+## Classifying feedback
+
+A lightweight classification can help the team reason about comments:
+
+```text
+CLARIFICATION
+→ wording or context is unclear
+
+CONTRADICTION
+→ two claims cannot both be true
+
+NEW FACT
+→ reviewer provides previously missing evidence
+
+DESIGN CHANGE
+→ proposed solution must change
+
+BLOCKER
+→ implementation should not start until resolved
+```
+
+These labels are optional. The useful part is distinguishing editorial feedback from information that changes the system model.
+
+## Evidence vs authority
+
+A reviewer may provide strong evidence without being the decision owner.
+
+Example:
+
+```text
+Developer:
+Current identity provider does not expose refresh tokens.
+
+→ implementation evidence
+
+Architect / system owner:
+decides whether the auth model must change
+
+→ decision authority
+```
+
+Review must preserve that distinction.
+
+A factual contradiction is resolved by evidence. A real design choice is resolved by the appropriate authority.
+
+See also [`../../05-collaboration/`](../../05-collaboration/).
+
+## What gets updated
+
+When review changes the model, update the knowledge at its canonical owner.
+
+Do not resolve a contradiction only inside a PR comment while leaving the documentation wrong.
+
+```text
+Review finding
+↓
+Affected claim
+↓
+Canonical owner
+↓
+Updated model
+↓
+Dependent specification / acceptance / diagrams
 ```
 
 ## Completion check
 
-Required knowledge owners have participated, business intent remains intact, ownership and contracts are consistent, failures are considered, blocking issues are resolved or explicitly open, and all accepted changes are reflected in canonical knowledge.
+Review is complete when:
 
-Next: [`../05-grooming/`](../05-grooming/)
+- all critical affected perspectives have been represented;
+- material contradictions are resolved;
+- new evidence has been incorporated where it belongs;
+- blockers are closed or explicitly prevent progression;
+- target behavior remains coherent across requirements, design and specification;
+- ownership and contracts are understood by the relevant owners;
+- Dev can explain what will be implemented;
+- QA can explain how the behavior will be verified.
+
+The goal is not “all comments marked resolved.”
+
+> **Review is complete when the model is sufficiently validated to become shared team knowledge.**
+
+Next: [`05-grooming/`](../05-grooming/)
