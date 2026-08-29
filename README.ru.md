@@ -4,140 +4,224 @@
 
 ### System-Structured Analysis Documentation
 
-**Практическая методология системного анализа для построения, проверки и сопровождения знаний вокруг реальной системы, её границ и зон ответственности.**
+**Практическая методология системного анализа для реальной работы:**  
+от первого запроса и требований — до реализации, проверки и актуального системного знания.
 
-[English version](README.md)
+[English](README.md) · [Начать с Foundation](01-foundation/README.ru.md) · [Открыть Practice](07-practice/README.ru.md) · [Посмотреть Aveli](08-examples/aveli/README.ru.md)
 
 </div>
 
 ---
 
-## Что такое SSAD
+> [!NOTE]
+> **SSAD учит не писать документы.**  
+> SSAD учит системно решать задачи в реальном цикле разработки, а документация становится структурированным следом анализа.
 
-SSAD — это **учебник, справочник и рабочий маршрут системного аналитика**.
+## Идея в одной схеме
 
-Методология не задаёт универсальное дерево документов. Сначала нужно понять реальную систему, а затем строить знания вокруг её настоящих responsibility boundaries.
-
-> **Структурируй знания так, как структурирована система. Для важных фактов определяй одного канонического владельца. Локальные модели собирай обратно в целостное представление системы.**
-
-```text
-SYSTEM
-  ↓
-BOUNDARIES
-  ↓
-RESPONSIBILITIES
-  ↓
-OWNERSHIP
-  ↓
-LOCAL MODELS
-  ↓
-CONNECTIONS
-  ↓
-SYSTEM SYNTHESIS
+```mermaid
+flowchart LR
+    S[Реальная система] --> B[Boundaries]
+    B --> R[Responsibilities]
+    R --> O[Ownership]
+    O --> M[Local models]
+    M --> C[Connections]
+    C --> Y[System synthesis]
 ```
 
-## Маршрут изучения
+Главный принцип:
 
-| Раздел | Главный вопрос |
+> **Структурируй знания так, как структурирована система. Для значимых фактов определяй канонического владельца. Локальные модели всегда собирай обратно в целостное представление системы.**
+
+SSAD не задаёт универсальное дерево `requirements/`, `api/`, `database/`, `diagrams/`. Структура знания появляется после того, как понятны реальные границы и зоны ответственности конкретной системы.
+
+---
+
+## Куда идти
+
+| Если тебе нужно... | Начни здесь |
 |---|---|
-| [`01-foundation/`](01-foundation/) | Зачем существует SSAD и на каких принципах она основана? |
-| [`02-workflow/`](02-workflow/) | Что делает системный аналитик от получения задачи до обновления знания? |
-| [`03-analysis/`](03-analysis/) | Как анализировать границы, ownership, поведение, состояния, данные, интерфейсы, интеграции, flows, trust и failures? |
-| [`04-knowledge-structure/`](04-knowledge-structure/) | Где должно жить системное знание и как его связывать? |
-| [`05-collaboration/`](05-collaboration/) | Как команда проверяет, оспаривает и развивает системное знание? |
-| [`06-change/`](06-change/) | Как определить impact и безопасно изменить существующую систему? |
-| [`07-practice/`](07-practice/) | Какие короткие чек-листы помогают в ежедневной работе? |
-| [`08-examples/`](08-examples/) | Как методология выглядит на реальной системе? |
+| понять сам подход | [`01 · Foundation`](01-foundation/README.ru.md) |
+| разобрать новую задачу от запроса до delivery | [`02 · Workflow`](02-workflow/README.ru.md) |
+| глубоко проанализировать систему | [`03 · Analysis`](03-analysis/README.ru.md) |
+| понять, где хранить знание | [`04 · Knowledge Structure`](04-knowledge-structure/README.ru.md) |
+| провести review и работать с командой | [`05 · Collaboration`](05-collaboration/README.ru.md) |
+| оценить влияние изменения | [`06 · Change`](06-change/README.ru.md) |
+| получить короткий рабочий checklist | [`07 · Practice`](07-practice/README.ru.md) |
+| увидеть SSAD на реальном проекте | [`08 · Examples`](08-examples/README.ru.md) |
 
-Рекомендуемый первый проход:
+### Первый последовательный проход
 
 ```text
 Foundation
-→ Workflow
-→ Analysis
-→ Knowledge Structure
-→ Collaboration
-→ Change
+   ↓
+Workflow
+   ↓
+Analysis
+   ↓
+Knowledge Structure
+   ↓
+Collaboration
+   ↓
+Change
+   ↓
+Practice + Examples
 ```
 
-Если у вас уже есть конкретная рабочая задача, можно начинать сразу с [`07-practice/`](07-practice/) и оттуда переходить в нужные глубокие главы.
+Уже работаешь над конкретной задачей? Не обязательно читать всё подряд — открой [`07-practice/`](07-practice/README.ru.md) и перейди в нужную глубокую главу из checklist.
 
-## Реальный workflow аналитика
+---
+
+## Реальный workflow системного аналитика
+
+```mermaid
+flowchart LR
+    A[Pre-analysis] --> B[Requirements]
+    B --> C[Analysis & Design]
+    C --> D[Specification]
+    D --> E[Review]
+    E --> F[Grooming]
+    F --> G[Delivery Support]
+    G --> H[Verification]
+    H --> I[Knowledge Update]
+
+    E -. new evidence .-> C
+    G -. implementation facts .-> C
+    H -. mismatch .-> D
+```
+
+SSAD не подменяет delivery-процесс своим lifecycle. Она показывает, **какое системное знание должно появиться на каждом этапе, как его проверить и где оно должно жить**.
+
+---
+
+## Как SSAD анализирует систему
+
+После определения границ и responsibility areas аналитик последовательно углубляется в нужные перспективы:
 
 ```text
-PRE-ANALYSIS
-→ REQUIREMENTS
-→ ANALYSIS & DESIGN
-→ SPECIFICATION
-→ REVIEW
-→ GROOMING
-→ DELIVERY SUPPORT
-→ VERIFICATION
-→ KNOWLEDGE UPDATE
+Boundaries
+→ Responsibilities
+→ Ownership
+→ Behavior
+→ States
+→ Data
+→ Interfaces
+→ Integrations
+→ Flows
+→ Trust
+→ Failures
+→ Synthesis
 ```
 
-Workflow итеративен. Review, реализация и verification могут дать новое evidence и переоткрыть более ранний анализ.
+Это default reasoning order, а не waterfall. Новый факт может переоткрыть любой более ранний вопрос.
+
+---
 
 ## Архитектура знания
 
-SSAD разделяет хранение и связи:
+SSAD разделяет две задачи:
 
 ```text
-Иерархия
+ИЕРАРХИЯ
 → где находится каноническое знание
 
-Ссылки
-→ как знания зависят друг от друга
+ГРАФ ССЫЛОК
+→ как знания связаны между собой
 ```
 
 > **Хранение иерархично. Знание связано графом.**
 
-Локальный документ может повторять необходимый контекст, чтобы оставаться читаемым, но должен ссылаться на канонического владельца вместо создания второй независимой истины.
+Локальный документ может повторить необходимый контекст, чтобы оставаться читаемым, но не должен становиться второй независимой версией истины.
+
+> **Не дублируй знание. При необходимости дублируй только контекст.**
+
+---
 
 ## Команда ↔ SSAD
 
-Системное знание — не законченный артефакт, который аналитик один раз передаёт разработке.
-
-```text
-People
-  ↕
-System knowledge
-  ↕
-Implementation / QA / Operations
-  ↓
-Evidence
-  ↺
-Analysis and knowledge update
+```mermaid
+flowchart TD
+    P[Product / Business / Client] <--> SA[System Analyst]
+    SA <--> K[SSAD knowledge]
+    K <--> D[Development]
+    K <--> Q[QA]
+    K <--> A[Architecture / Integration / Ops]
+    D --> E[Implementation evidence]
+    Q --> E
+    A --> E
+    E --> K
 ```
 
-Разные участники приносят разное evidence и обладают разной authority. Реализация тоже является источником новых фактов о системе.
+Разные участники приносят разное evidence и обладают разной authority.
 
-## Проверка на реальном проекте
+Разработчик может быть лучшим источником факта о текущей реализации, но не обязательно владельцем продуктового или архитектурного решения. Review, grooming, разработка и QA поэтому не завершают анализ — они могут изменить его.
 
-Основной real-world кейс — **Aveli**:
+---
 
-https://github.com/branch-danya-dev/aveli-system-analysis
+## Реальная проверка: Aveli
 
-Компактный учебный маршрут находится в [`08-examples/aveli/`](08-examples/aveli/).
+Основной real-world кейс SSAD — **Aveli**:
 
-Aveli используется для проверки SSAD на реальных границах системы, локальных данных, серверном access control, billing-интеграциях, offline trust, failure behavior и сквозных flows.
+**[branch-danya-dev/aveli-system-analysis](https://github.com/branch-danya-dev/aveli-system-analysis)**
 
-## Текущая структура репозитория
+В нём SSAD проверяется не на искусственном шаблоне, а на настоящей системе с:
 
-В репозитории намеренно оставлена одна reader-first структура методологии:
+- Flutter frontend;
+- backend-controlled account и access;
+- локальным professional workspace;
+- RevenueCat и store billing;
+- offline trust;
+- external integrations;
+- failure behavior и end-to-end flows.
+
+Начать компактный разбор: **[`08-examples/aveli/`](08-examples/aveli/README.ru.md)**.
 
 ```text
-01-foundation/
-02-workflow/
-03-analysis/
-04-knowledge-structure/
-05-collaboration/
-06-change/
-07-practice/
-08-examples/
-assets/
+Repository structure
+        ↓
+Access ownership
+        ↓
+Offline trust
+        ↓
+System synthesis
 ```
 
-`assets/` содержит исходники диаграмм и подготовленные визуальные материалы. Это инфраструктура, а не отдельный конкурирующий раздел методологии.
+---
 
-История предыдущих вариантов структуры сохраняется в Git, а не как вторая активная документационная архитектура.
+## Что SSAD не пытается заменить
+
+SSAD совместима с существующими инженерными практиками и инструментами.
+
+Она не заменяет UML, BPMN, C4, OpenAPI, ADR, schemas, backlog, user stories или архитектурные стандарты команды.
+
+Она отвечает на другой вопрос:
+
+> **Как собрать разнородные аналитические знания в целостную, навигируемую и поддерживаемую модель конкретной системы?**
+
+---
+
+## Активная структура репозитория
+
+```text
+01-foundation/          principles
+02-workflow/            real SA lifecycle
+03-analysis/            analytical toolkit
+04-knowledge-structure/ knowledge architecture
+05-collaboration/       team ↔ knowledge loop
+06-change/              change mechanics
+07-practice/            task-based checklists
+08-examples/            real-world validation
+assets/                 supporting visuals
+```
+
+Исторические версии структуры остаются в Git history и не конкурируют с текущим знанием.
+
+---
+
+<div align="center">
+
+**Начать:** [`01 · Foundation`](01-foundation/README.ru.md)  
+**Есть задача прямо сейчас:** [`07 · Practice`](07-practice/README.ru.md)  
+**Хочется увидеть реальный проект:** [`08 · Aveli`](08-examples/aveli/README.ru.md)
+
+</div>
