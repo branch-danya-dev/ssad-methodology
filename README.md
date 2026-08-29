@@ -4,140 +4,224 @@
 
 ### System-Structured Analysis Documentation
 
-**A practical system-analysis methodology for building, validating and maintaining knowledge around the real system, its boundaries and responsibilities.**
+**A practical system-analysis methodology for real delivery:**  
+from the first request and requirements to implementation, verification and current system knowledge.
 
-[Русская версия](README.ru.md)
+[Русская версия](README.ru.md) · [Start with Foundation](01-foundation/README.md) · [Open Practice](07-practice/README.md) · [See Aveli](08-examples/aveli/README.md)
 
 </div>
 
 ---
 
-## What SSAD is
+> [!NOTE]
+> **SSAD is not about producing documents.**  
+> It is about solving system-analysis problems through the real delivery cycle, while documentation becomes the structured trace of that reasoning.
 
-SSAD is a **learning guide, reference and working route for system analysts**.
+## The idea in one diagram
 
-It does not prescribe a universal document tree. Instead it asks you to understand the system first and let the knowledge structure follow real responsibility boundaries.
-
-> **Structure knowledge like the system. Keep one canonical owner for important facts. Connect local knowledge back into a coherent system view.**
-
-```text
-SYSTEM
-  ↓
-BOUNDARIES
-  ↓
-RESPONSIBILITIES
-  ↓
-OWNERSHIP
-  ↓
-LOCAL MODELS
-  ↓
-CONNECTIONS
-  ↓
-SYSTEM SYNTHESIS
+```mermaid
+flowchart LR
+    S[Real system] --> B[Boundaries]
+    B --> R[Responsibilities]
+    R --> O[Ownership]
+    O --> M[Local models]
+    M --> C[Connections]
+    C --> Y[System synthesis]
 ```
 
-## Learning path
+Core principle:
 
-| Section | Main question |
+> **Structure knowledge like the system. Give important facts a canonical owner. Always reconnect local models into a coherent system view.**
+
+SSAD does not prescribe a universal `requirements/`, `api/`, `database/`, `diagrams/` tree. The knowledge structure emerges after the real boundaries and responsibility areas of the specific system are understood.
+
+---
+
+## Where to start
+
+| If you need to... | Start here |
 |---|---|
-| [`01-foundation/`](01-foundation/) | Why does SSAD exist and what are its core principles? |
-| [`02-workflow/`](02-workflow/) | What does a system analyst do from request intake to knowledge update? |
-| [`03-analysis/`](03-analysis/) | How do we analyze boundaries, ownership, behavior, states, data, interfaces, integrations, flows, trust and failures? |
-| [`04-knowledge-structure/`](04-knowledge-structure/) | Where should system knowledge live and how should it be connected? |
-| [`05-collaboration/`](05-collaboration/) | How do people validate, challenge and evolve system knowledge together? |
-| [`06-change/`](06-change/) | How do we analyze impact and safely change an existing system? |
-| [`07-practice/`](07-practice/) | Which short checklists help in day-to-day analytical work? |
-| [`08-examples/`](08-examples/) | What does the methodology look like on a real system? |
+| understand the approach itself | [`01 · Foundation`](01-foundation/README.md) |
+| take a task from request to delivery | [`02 · Workflow`](02-workflow/README.md) |
+| deeply analyze a system | [`03 · Analysis`](03-analysis/README.md) |
+| decide where knowledge should live | [`04 · Knowledge Structure`](04-knowledge-structure/README.md) |
+| review a solution and work with the team | [`05 · Collaboration`](05-collaboration/README.md) |
+| assess the impact of a change | [`06 · Change`](06-change/README.md) |
+| get a short working checklist | [`07 · Practice`](07-practice/README.md) |
+| see SSAD applied to a real system | [`08 · Examples`](08-examples/README.md) |
 
-Recommended first read:
+### Recommended first read
 
 ```text
 Foundation
-→ Workflow
-→ Analysis
-→ Knowledge Structure
-→ Collaboration
-→ Change
+   ↓
+Workflow
+   ↓
+Analysis
+   ↓
+Knowledge Structure
+   ↓
+Collaboration
+   ↓
+Change
+   ↓
+Practice + Examples
 ```
 
-Use [`07-practice/`](07-practice/) when you already have a concrete task and need a quick route into the methodology.
+Already working on a concrete task? You do not need to read the repository front to back. Open [`07-practice/`](07-practice/README.md) and follow the checklist into the deeper chapters you need.
 
-## Real analyst workflow
+---
+
+## Real system-analyst workflow
+
+```mermaid
+flowchart LR
+    A[Pre-analysis] --> B[Requirements]
+    B --> C[Analysis & Design]
+    C --> D[Specification]
+    D --> E[Review]
+    E --> F[Grooming]
+    F --> G[Delivery Support]
+    G --> H[Verification]
+    H --> I[Knowledge Update]
+
+    E -. new evidence .-> C
+    G -. implementation facts .-> C
+    H -. mismatch .-> D
+```
+
+SSAD does not replace the delivery process with its own lifecycle. It explains **what system knowledge should exist at each stage, how it should be validated and where it should live**.
+
+---
+
+## How SSAD analyzes a system
+
+Once boundaries and responsibility areas are clear, the analyst deepens the relevant perspectives:
 
 ```text
-PRE-ANALYSIS
-→ REQUIREMENTS
-→ ANALYSIS & DESIGN
-→ SPECIFICATION
-→ REVIEW
-→ GROOMING
-→ DELIVERY SUPPORT
-→ VERIFICATION
-→ KNOWLEDGE UPDATE
+Boundaries
+→ Responsibilities
+→ Ownership
+→ Behavior
+→ States
+→ Data
+→ Interfaces
+→ Integrations
+→ Flows
+→ Trust
+→ Failures
+→ Synthesis
 ```
 
-The workflow is iterative. Review, implementation and verification may expose evidence that reopens earlier analysis.
+This is a default reasoning order, not a waterfall. New evidence may reopen any earlier question.
+
+---
 
 ## Knowledge architecture
 
-SSAD separates storage from relationships:
+SSAD separates two different problems:
 
 ```text
-Hierarchy
+HIERARCHY
 → where canonical knowledge lives
 
-Links
-→ how knowledge depends on other knowledge
+LINK GRAPH
+→ how knowledge relates to other knowledge
 ```
 
 > **Storage is hierarchical. Knowledge is graph-connected.**
 
-A local document may repeat enough context to remain readable, but should link to the canonical owner instead of creating a second independent truth.
+A local document may repeat enough context to remain readable, but it should not become a second independent version of truth.
+
+> **Do not duplicate knowledge. Duplicate context when useful.**
+
+---
 
 ## Team ↔ SSAD
 
-System knowledge is not a finished artifact handed from an analyst to developers.
-
-```text
-People
-  ↕
-System knowledge
-  ↕
-Implementation / QA / Operations
-  ↓
-Evidence
-  ↺
-Analysis and knowledge update
+```mermaid
+flowchart TD
+    P[Product / Business / Client] <--> SA[System Analyst]
+    SA <--> K[SSAD knowledge]
+    K <--> D[Development]
+    K <--> Q[QA]
+    K <--> A[Architecture / Integration / Ops]
+    D --> E[Implementation evidence]
+    Q --> E
+    A --> E
+    E --> K
 ```
 
-Different participants contribute different evidence and authority. Implementation itself is also a source of evidence.
+Different participants contribute different evidence and hold different authority.
 
-## Real-world validation
+A developer may be the best source for a fact about the current implementation without being the owner of the corresponding product or architecture decision. Review, grooming, implementation and QA therefore do not merely consume analysis — they can change it.
 
-The primary real-world case is **Aveli**:
+---
 
-https://github.com/branch-danya-dev/aveli-system-analysis
+## Real-world validation: Aveli
 
-The compact learning route is available in [`08-examples/aveli/`](08-examples/aveli/).
+The primary real-world SSAD case is **Aveli**:
 
-Aveli is used to validate SSAD against real boundaries, local data, backend-controlled access, billing integrations, offline trust, failures and end-to-end flows.
+**[branch-danya-dev/aveli-system-analysis](https://github.com/branch-danya-dev/aveli-system-analysis)**
 
-## Repository shape
+Aveli validates SSAD against a real system containing:
 
-The current repository intentionally has one reader-first methodology structure:
+- a Flutter frontend;
+- backend-controlled account and access;
+- a local professional workspace;
+- RevenueCat and store billing;
+- offline trust;
+- external integrations;
+- failure behavior and end-to-end flows.
+
+Start with the compact walkthrough: **[`08-examples/aveli/`](08-examples/aveli/README.md)**.
 
 ```text
-01-foundation/
-02-workflow/
-03-analysis/
-04-knowledge-structure/
-05-collaboration/
-06-change/
-07-practice/
-08-examples/
-assets/
+Repository structure
+        ↓
+Access ownership
+        ↓
+Offline trust
+        ↓
+System synthesis
 ```
 
-`assets/` contains supporting diagram sources and rendered visuals. It is infrastructure, not a competing methodology section.
+---
 
-Historical restructuring material is preserved by Git history rather than as a second active documentation tree.
+## What SSAD does not replace
+
+SSAD is compatible with existing engineering practices and tools.
+
+It does not replace UML, BPMN, C4, OpenAPI, ADRs, schemas, backlog practices, user stories or a team's architecture standards.
+
+It answers a different question:
+
+> **How do we combine heterogeneous analytical knowledge into one coherent, navigable and maintainable model of a specific system?**
+
+---
+
+## Active repository structure
+
+```text
+01-foundation/          principles
+02-workflow/            real SA lifecycle
+03-analysis/            analytical toolkit
+04-knowledge-structure/ knowledge architecture
+05-collaboration/       team ↔ knowledge loop
+06-change/              change mechanics
+07-practice/            task-based checklists
+08-examples/            real-world validation
+assets/                 supporting visuals
+```
+
+Historical structures remain available in Git history rather than competing with current knowledge.
+
+---
+
+<div align="center">
+
+**Start:** [`01 · Foundation`](01-foundation/README.md)  
+**Have a task right now:** [`07 · Practice`](07-practice/README.md)  
+**Want to see a real project:** [`08 · Aveli`](08-examples/aveli/README.md)
+
+</div>
