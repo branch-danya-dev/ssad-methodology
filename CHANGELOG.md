@@ -15,6 +15,14 @@ Completed the migration from the research-oriented SSAD structure to one active 
 - `07-practice/` — task-based daily checklists;
 - `08-examples/` — real-world Aveli validation slices.
 
+### Quality pass
+
+- expanded the English `Specification`, `Review`, `Grooming`, `Delivery Support`, `Verification` and `Knowledge Update` chapters so they preserve the same analytical responsibilities as the Russian versions instead of acting as short summaries;
+- corrected the `03-analysis/` reading order so local and cross-boundary models are built before `synthesis`;
+- added one complete recommended analysis route from boundaries through failures to system synthesis;
+- normalized English terminology around `canonical owner`, `canonical knowledge`, `evidence`, `authority` and `responsibility area`;
+- preserved the separation between workflow timing, analysis mechanics, knowledge architecture, collaboration mechanics and change analysis.
+
 ### Removed
 
 The following migration-era top-level documentation trees were removed after their useful concepts were absorbed into the reader-first structure:
