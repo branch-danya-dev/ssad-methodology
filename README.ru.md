@@ -7,7 +7,7 @@
 **Практическая методология системного анализа для реальной работы:**  
 от первого запроса и требований — до реализации, проверки и актуального системного знания.
 
-[English](README.md) · [Начать с Foundation](01-foundation/README.ru.md) · [Открыть Practice](07-practice/README.ru.md) · [Посмотреть Aveli](08-examples/aveli/README.ru.md)
+[English](README.md) · [Начать с Foundation](01-foundation/README.ru.md) · [Открыть Practice](07-practice/README.ru.md) · [Посмотреть реальные applications](08-examples/README.ru.md)
 
 </div>
 
@@ -48,7 +48,7 @@ SSAD не задаёт универсальное дерево `requirements/`, 
 | провести review и работать с командой | [`05 · Collaboration`](05-collaboration/README.ru.md) |
 | оценить влияние изменения | [`06 · Change`](06-change/README.ru.md) |
 | получить короткий рабочий checklist | [`07 · Practice`](07-practice/README.ru.md) |
-| увидеть SSAD на реальном проекте | [`08 · Examples`](08-examples/README.ru.md) |
+| увидеть SSAD на реальных системах | [`08 · Examples and Applications`](08-examples/README.ru.md) |
 
 ### Первый последовательный проход
 
@@ -65,7 +65,7 @@ Collaboration
    ↓
 Change
    ↓
-Practice + Examples
+Practice + Applications
 ```
 
 Уже работаешь над конкретной задачей? Не обязательно читать всё подряд — открой [`07-practice/`](07-practice/README.ru.md) и перейди в нужную глубокую главу из checklist.
@@ -158,33 +158,56 @@ flowchart TD
 
 ---
 
-## Реальная проверка: Aveli
+## Проверка на реальных системах
 
-Основной real-world кейс SSAD — **Aveli**:
+SSAD сейчас задокументирована на двух существенно разных реальных системах.
+
+### Aveli · product-shaped system
 
 **[branch-danya-dev/aveli-system-analysis](https://github.com/branch-danya-dev/aveli-system-analysis)**
 
-В нём SSAD проверяется не на искусственном шаблоне, а на настоящей системе с:
+Aveli проверяет SSAD на:
 
-- Flutter frontend;
-- backend-controlled account и access;
-- локальным professional workspace;
-- RevenueCat и store billing;
-- offline trust;
-- external integrations;
-- failure behavior и end-to-end flows.
+- Flutter frontend и backend boundaries;
+- локальных professional data;
+- server-controlled account и access;
+- RevenueCat/store billing evidence;
+- bounded offline trust;
+- integrations, failures и end-to-end flows.
 
-Начать компактный разбор: **[`08-examples/aveli/`](08-examples/aveli/README.ru.md)**.
+Компактный маршрут: **[`08-examples/aveli/`](08-examples/aveli/README.ru.md)**
 
 ```text
-Repository structure
+Repository Structure
         ↓
-Access ownership
+Access Ownership
         ↓
-Offline trust
+Offline Trust
         ↓
-System synthesis
+System Synthesis
 ```
+
+### Enterprise Workplace Migration · transformation-shaped system
+
+**[branch-danya-dev/enterprise-workplace-os-migration](https://github.com/branch-danya-dev/enterprise-workplace-os-migration)**
+
+Этот application проверяет SSAD на распределённой enterprise migration, где система проходит через рабочие места, support-домены, infrastructure tooling, planning и operational recovery.
+
+Компактный маршрут: **[`08-examples/enterprise-workplace-migration/`](08-examples/enterprise-workplace-migration/README.ru.md)**
+
+```text
+Responsibility Structure
+        ↓
+Global Status Decomposition
+        ↓
+Evidence & Readiness
+        ↓
+Technical Projection
+```
+
+Два application намеренно имеют разную структуру репозиториев.
+
+> **Общая методология проявляется в reasoning model, а не в обязательном дереве директорий.**
 
 ---
 
@@ -202,7 +225,7 @@ SSAD совместима с существующими инженерными �
 
 ## Развитие проекта и contributions
 
-SSAD сейчас находится в фазе **validation и stabilization**, а не бесконечного добавления новых глав.
+SSAD сейчас находится в фазе **comparative validation и stabilization**, а не бесконечного добавления новых глав.
 
 - Хочешь участвовать в развитии? Открой [`CONTRIBUTING.ru.md`](CONTRIBUTING.ru.md).
 - Хочешь понять, что именно будет означать готовность к v1.0? Открой [`ROADMAP.ru.md`](ROADMAP.ru.md).
@@ -211,7 +234,7 @@ SSAD сейчас находится в фазе **validation и stabilization**
 
 > **Новые концепты должны появляться из реальных аналитических friction points и evidence, а не из желания закончить классификацию.**
 
-Текущий путь к v1.0 делает приоритетом второй real-world validation case, дальнейшее применение SSAD к изменениям Aveli, стабильность терминологии и навигации, а также осознанный выбор publication license.
+Второй существенно отличающийся real-world application теперь завершён. Следующая validation-работа — сравнивать friction points между applications, продолжать проверку на значимых изменениях, стабилизировать терминологию/навигацию и завершить publication/release hygiene.
 
 ---
 
@@ -225,7 +248,7 @@ SSAD сейчас находится в фазе **validation и stabilization**
 05-collaboration/       team ↔ knowledge loop
 06-change/              change mechanics
 07-practice/            task-based checklists
-08-examples/            real-world validation
+08-examples/            examples + real-world applications
 assets/                 supporting visuals
 ```
 
@@ -237,7 +260,7 @@ assets/                 supporting visuals
 
 **Начать:** [`01 · Foundation`](01-foundation/README.ru.md)  
 **Есть задача прямо сейчас:** [`07 · Practice`](07-practice/README.ru.md)  
-**Хочется увидеть реальный проект:** [`08 · Aveli`](08-examples/aveli/README.ru.md)  
+**Хочется увидеть реальные applications:** [`08 · Examples and Applications`](08-examples/README.ru.md)  
 **Участвовать:** [`CONTRIBUTING`](CONTRIBUTING.ru.md) · **Направление:** [`ROADMAP`](ROADMAP.ru.md)
 
 </div>
