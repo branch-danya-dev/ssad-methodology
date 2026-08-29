@@ -1,95 +1,98 @@
-# Example — Desktop Plugin
+# Worked Example — Desktop Plugin
 
 [Русская версия](README.ru.md)
 
-> **Status:** synthetic example  
-> **Purpose:** demonstrate a system shape where `backend/` and `frontend/` are not useful top-level owners.
+> **Status:** synthetic worked example  
+> **Purpose:** show the full relationship between SSAD workflow, stable knowledge ownership, and change analysis.
 
 ## Scenario
 
-A fictional CAD plugin exports selected drawing sheets to PDF and writes an export manifest next to the generated files.
+A fictional desktop CAD plugin exports selected drawing sheets to PDF.
 
-The plugin runs entirely inside a desktop host application.
+Baseline behavior:
 
-Assumptions:
+- the plugin runs inside a host CAD application;
+- the user selects sheets in the host document;
+- the plugin asks the host application to export each selected sheet to PDF;
+- generated files are written to a user-selected local folder;
+- the plugin writes `export-manifest.json` with the export result;
+- the plugin does not modify the source document;
+- one failed sheet does not cancel successful exports of other sheets;
+- there is no backend, cloud database, or network dependency.
 
-```text
-Plugin
-Host CAD application
-Local filesystem
-OS print/PDF service
-No backend
-No cloud database
-```
-
-## Possible SSAD Perspectives
+The initial stable system shape is therefore:
 
 ```text
 business/
 plugin/
 host-application/
 filesystem/
-integrations/
 system/
 ```
 
-This is the important point: SSAD does not force:
+No `backend/`, `frontend/`, or `integrations/` area exists because the baseline system does not justify those owners.
+
+## How to Read This Example
+
+### 1. Walkthrough
+
+[`walkthrough/`](walkthrough/)
+
+Shows **how knowledge is constructed**:
 
 ```text
-backend/
-frontend/
-database/
+DISCOVER
+→ BOUND
+→ OWN
+→ MODEL
+→ CONNECT
+→ SYNTHESIZE
+→ VERIFY
+→ STABILIZE
 ```
 
-when those perspectives do not describe the real system.
+### 2. Baseline
 
-## Ownership Example
+[`baseline/`](baseline/)
+
+Shows **where the resulting stable knowledge belongs**:
 
 ```text
-Export command orchestration
-→ plugin
-
-Open document / selected sheets
-→ host application
-
-Generated PDF files
-→ filesystem
-
-Print capability
-→ OS service
-
-Export result interpretation
-→ plugin
+business/
+plugin/
+host-application/
+filesystem/
+system/
 ```
 
-## Boundary Example
+This is the key SSAD distinction:
 
-The host application is not merely "a library". It owns document state and exposes the runtime environment in which the plugin operates.
+> Workflow order is not repository ownership structure.
 
-That can justify an explicit `host-application/` perspective.
+### 3. Change
 
-## Change Surface Example
+[`changes/dms-upload/`](changes/dms-upload/)
 
-Change request:
+Adds a new request:
 
-> Add automatic upload of generated PDFs to a document-management service.
+> Upload successfully generated PDFs to an external document-management system.
 
-Before the change:
+This introduces a new external boundary and demonstrates Change Surface analysis.
 
-```text
-Plugin → Host → Filesystem
-```
+## What This Example Demonstrates
 
-After the change:
+- evidence-first construction even in a synthetic exercise;
+- system boundary before implementation detail;
+- ownership before contracts;
+- optional perspectives;
+- system-shaped stable documentation;
+- traceability across owners;
+- late system synthesis;
+- verification before Stable;
+- a new `integrations/` perspective appearing only when a real change justifies it.
 
-```text
-Plugin → Host
-Plugin → Filesystem
-Plugin → External DMS
-```
+## Synthetic Nature
 
-The external system boundary changes, so an `integrations/` owner becomes more significant.
+All product behavior, constraints, components, and technical details in this directory are fictional teaching assumptions.
 
-## Intentionally Simplified
-
-The example does not prescribe a CAD vendor, plugin API, programming language, PDF engine, or DMS provider.
+They are internally consistent for the example but are not implementation evidence for a real product.

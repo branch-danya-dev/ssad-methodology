@@ -6,7 +6,7 @@
 
 **A system-oriented methodology for building, organizing, verifying, and evolving system-analysis knowledge.**
 
-![Version](https://img.shields.io/badge/version-v0.1.2-blue)
+![Version](https://img.shields.io/badge/version-v0.2.0-blue)
 ![Status](https://img.shields.io/badge/status-evolving-orange)
 ![Applications](https://img.shields.io/badge/real--world%20applications-1-success)
 
@@ -60,27 +60,35 @@ SSAD deliberately separates **examples** from **applications**.
 
 `examples/` contains synthetic systems created specifically to explain or exercise the methodology.
 
-An example:
+| Example | System shape | Main SSAD idea | Depth |
+|---|---|---|---|
+| [Mobile Application](examples/mobile-application/) | client + backend + local/server data | local/server ownership and synchronization boundary | focused |
+| [Desktop Plugin](examples/desktop-plugin/) | plugin + host application + filesystem | full SSAD workflow, system-shaped baseline, Change Surface | **worked** |
+| [Event-Driven Platform](examples/event-driven-platform/) | services + messaging + data + operations | distributed ownership and asynchronous contracts | focused |
 
-- does not need to exist as a real product;
-- may use any architecture needed to illustrate a principle;
-- may intentionally simplify implementation details;
-- is not evidence that the described system was actually built;
-- can be designed to expose a particular ownership, boundary, data, integration, or change-analysis problem.
+The **Desktop Plugin worked example** is the recommended practical walkthrough:
 
-Examples currently include:
+```text
+analysis workflow
+        ↓
+walkthrough/
+        ↓
+stable knowledge
+        ↓
+baseline/
+        ↓
+new request
+        ↓
+changes/dms-upload/
+```
 
-| Example | System shape | Main SSAD idea |
-|---|---|---|
-| [Mobile Application](examples/mobile-application/) | client + backend + local/server data | local/server ownership and synchronization boundary |
-| [Desktop Plugin](examples/desktop-plugin/) | plugin + host application + filesystem | host boundary without forced backend/frontend folders |
-| [Event-Driven Platform](examples/event-driven-platform/) | services + messaging + data + operations | distributed ownership and asynchronous contracts |
+It demonstrates an important SSAD distinction:
+
+> **The workflow describes how knowledge is constructed. The baseline structure describes who owns the resulting knowledge.**
 
 ### Applications
 
 `applications/` contains **real projects actually documented using SSAD**.
-
-Applications are practical evidence. They may reveal gaps, contradictions, or new methodology rules.
 
 Current real-world application:
 
@@ -122,7 +130,8 @@ The sequence describes **knowledge dependencies, not waterfall phases**.
 
 A later discovery may reopen an earlier decision. The goal is not to prevent iteration; the goal is to prevent downstream detail from being treated as stable while its upstream assumptions remain unresolved.
 
-Detailed workflow: [`workflow/construction.md`](workflow/construction.md)
+Detailed workflow: [`workflow/construction.md`](workflow/construction.md)  
+Worked example: [`examples/desktop-plugin/walkthrough/`](examples/desktop-plugin/walkthrough/)
 
 ---
 
@@ -148,15 +157,12 @@ Verification
 Stable
 ```
 
-> **Which owners of system knowledge are affected by this change?**
-
-Detailed process: [`workflow/change-analysis.md`](workflow/change-analysis.md)
+Detailed process: [`workflow/change-analysis.md`](workflow/change-analysis.md)  
+Worked change: [`examples/desktop-plugin/changes/dms-upload/`](examples/desktop-plugin/changes/dms-upload/)
 
 ---
 
 ## Methodology evolution
-
-SSAD evolves through real usage and explicit decisions.
 
 ```text
 Observed problem
@@ -172,8 +178,6 @@ Accept / Reject / Revise
 Specification update
 ```
 
-Synthetic examples help explore consequences cheaply. Real-world applications provide stronger evidence because the methodology must survive actual project constraints.
-
 The first accepted methodology decision is:
 
 **ADR-001 — Perspectives Over Folder Templates**
@@ -188,12 +192,12 @@ The first accepted methodology decision is:
 |---|---|
 | understand SSAD quickly | [`specification/methodology.md`](specification/methodology.md) |
 | see the principles | [`specification/core-principles.md`](specification/core-principles.md) |
-| explore synthetic system shapes | [`examples/`](examples/) |
+| **follow SSAD from discovery to Stable** | [`examples/desktop-plugin/walkthrough/`](examples/desktop-plugin/walkthrough/) |
+| inspect the stable output of that workflow | [`examples/desktop-plugin/baseline/`](examples/desktop-plugin/baseline/) |
+| see Change Surface in practice | [`examples/desktop-plugin/changes/dms-upload/`](examples/desktop-plugin/changes/dms-upload/) |
+| explore other synthetic system shapes | [`examples/`](examples/) |
 | inspect real-world usage | [`applications/`](applications/) |
-| apply the construction workflow | [`workflow/construction.md`](workflow/construction.md) |
-| analyze a system change | [`workflow/change-analysis.md`](workflow/change-analysis.md) |
 | run a quality gate | [`workflow/verification.md`](workflow/verification.md) |
-| understand evidence and maturity | [`specification/evidence-and-maturity.md`](specification/evidence-and-maturity.md) |
 | follow methodology evolution | [`decisions/`](decisions/) and [`proposals/`](proposals/) |
 
 ---
@@ -209,25 +213,21 @@ It defines **how those forms of knowledge can be owned, connected, constructed, 
 ## Current maturity
 
 ```text
-SSAD v0.1.2
-Foundation
-+ public presentation
-+ examples/application separation
+SSAD v0.2.0
 
-Synthetic examples:
-mobile application
-desktop plugin
-event-driven platform
+Foundation                 ✓
+Public presentation        ✓
+Examples / applications    ✓
+First worked example       ✓
+Change Surface walkthrough ✓
 
 Real-world applications:
 Aveli
 
 Next:
-additional real-world applications
-→ practical playbooks
+extract practical playbooks from the worked example
 → reusable templates
+→ additional real-world applications
 → machine-readable metadata
 → automated consistency checks
 ```
-
-> SSAD is an evolving methodology. Its individual practices are not presented as universally novel; its value is in the system-oriented combination, explicit ownership model, workflow, change model, and validation through real projects.

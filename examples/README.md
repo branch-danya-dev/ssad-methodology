@@ -4,45 +4,63 @@
 
 This directory contains **fictional or deliberately simplified systems** used to explain SSAD.
 
-Examples are teaching and exploration artifacts. They do not claim that the described product, codebase, infrastructure, or implementation exists.
+Examples do not claim that the described product, codebase, infrastructure, or implementation exists.
 
-## Why Synthetic Examples Exist
+## Example Depth
 
-A methodology needs to demonstrate behavior across different system shapes without requiring a complete real project for every question.
-
-An example may therefore be intentionally designed to show:
-
-- a system with no backend;
-- a host-application boundary;
-- distributed data ownership;
-- asynchronous communication;
-- an external authority;
-- an operations perspective;
-- a boundary-changing feature;
-- a difficult Change Surface.
-
-## Rules for Examples
-
-Every example SHOULD state:
+SSAD examples may be:
 
 ```text
-purpose
-system shape
-assumptions
-analytical perspectives
-ownership model
-what SSAD principle it demonstrates
-which details are intentionally simplified
-```
+focused
+→ illustrates one or two methodology ideas
 
-An example MUST NOT be presented as implementation evidence.
+worked
+→ follows a substantial part of the workflow
+→ shows both construction and stable knowledge ownership
+→ may include a change-analysis walkthrough
+```
 
 ## Current Examples
 
-| Example | Shape | Focus |
-|---|---|---|
-| [Mobile Application](mobile-application/) | client + backend + local/server persistence | data ownership and synchronization |
-| [Desktop Plugin](desktop-plugin/) | plugin + host application + filesystem | host boundary and non-product-shaped perspectives |
-| [Event-Driven Platform](event-driven-platform/) | services + messaging + data + operations | distributed ownership and asynchronous contracts |
+| Example | Shape | Focus | Depth |
+|---|---|---|---|
+| [Mobile Application](mobile-application/) | client + backend + local/server persistence | data ownership and synchronization | focused |
+| [Desktop Plugin](desktop-plugin/) | plugin + host application + filesystem | workflow → baseline → change | **worked** |
+| [Event-Driven Platform](event-driven-platform/) | services + messaging + data + operations | distributed ownership and asynchronous contracts | focused |
 
-These examples are intentionally different from one another. Their purpose is to demonstrate that SSAD follows the system rather than one universal repository tree.
+## Recommended Worked Example
+
+Start with [`desktop-plugin/`](desktop-plugin/).
+
+It deliberately separates:
+
+```text
+walkthrough/
+→ temporal analysis process
+
+baseline/
+→ stable system-shaped knowledge
+
+changes/
+→ evolution after stabilization
+```
+
+This layout belongs to the **teaching example**, not to the analyzed system itself.
+
+The stable documentation inside `baseline/` is organized by actual owners:
+
+```text
+business/
+plugin/
+host-application/
+filesystem/
+system/
+```
+
+That difference is intentional and central to SSAD.
+
+## Rules for Examples
+
+Every example SHOULD state its purpose, assumptions, system shape, analytical perspectives, ownership model, demonstrated SSAD principle, and intentional simplifications.
+
+An example MUST NOT be presented as real implementation evidence.
