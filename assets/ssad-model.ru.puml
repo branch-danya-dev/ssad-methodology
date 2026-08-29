@@ -1,0 +1,18 @@
+@startuml
+title SSAD — Три связанные модели
+skinparam shadowing false
+skinparam roundcorner 14
+skinparam defaultTextAlignment center
+
+rectangle "SSAD\nSystem-Structured Analysis Documentation" as SSAD
+rectangle "Архитектура знаний\n\nГДЕ находится знание\n\n• перспективы\n• каноническое владение\n• ссылки\n• синтез" as KA
+rectangle "Процесс анализа\n\nКАК строится знание\n\n• подтверждения\n• границы\n• владение\n• зрелость" as AW
+rectangle "Модель изменений\n\nКАК знание развивается\n\n• область влияния\n• анализ последствий\n• трассируемость\n• сопровождение" as CM
+
+SSAD --> KA
+SSAD --> AW
+SSAD --> CM
+KA <--> AW : задаёт структуру
+AW <--> CM : создаёт стабильную основу
+CM --> KA : обновляет затронутых владельцев
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+title SSAD — Dependency-Driven Analysis Workflow
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultTextAlignment center
+
+rectangle DISCOVER
+rectangle BOUND
+rectangle OWN
+rectangle MODEL
+rectangle CONNECT
+rectangle SYNTHESIZE
+rectangle VERIFY
+rectangle STABILIZE
+rectangle EVOLVE
+rectangle "CHANGE ANALYSIS" as CHANGE
+
+DISCOVER --> BOUND
+BOUND --> OWN
+OWN --> MODEL
+MODEL --> CONNECT
+CONNECT --> SYNTHESIZE
+SYNTHESIZE --> VERIFY
+VERIFY --> STABILIZE
+STABILIZE --> EVOLVE
+EVOLVE --> CHANGE
+
+VERIFY ..> OWN : contradiction may reopen ownership
+VERIFY ..> MODEL : evidence may reopen model
+CHANGE ..> BOUND : boundary-changing change
+CHANGE ..> OWN : ownership-changing change
+
+note bottom
+Stages express knowledge dependency,
+not waterfall phases.
+end note
+@enduml

@@ -1,6 +1,6 @@
 # Playbooks
 
-Practical SSAD playbooks are planned after the foundation has been validated beyond the first case.
+Practical SSAD playbooks are planned after the foundation is exercised through more examples and real-world applications.
 
 Candidates:
 
@@ -12,3 +12,5 @@ integration-change
 architecture-change
 legacy-documentation-migration
 ```
+
+Playbooks should describe repeatable work patterns, not prescribe one system architecture.

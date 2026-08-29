@@ -1,0 +1,18 @@
+@startuml
+title SSAD — Three Connected Models
+skinparam shadowing false
+skinparam roundcorner 14
+skinparam defaultTextAlignment center
+
+rectangle "SSAD\nSystem-Structured Analysis Documentation" as SSAD
+rectangle "Knowledge Architecture\n\nWHERE knowledge belongs\n\n• perspectives\n• canonical ownership\n• references\n• synthesis" as KA
+rectangle "Analysis Workflow\n\nHOW knowledge is built\n\n• evidence\n• boundaries\n• ownership\n• maturity" as AW
+rectangle "Change Model\n\nHOW knowledge evolves\n\n• Change Surface\n• impact analysis\n• traceability\n• maintenance" as CM
+
+SSAD --> KA
+SSAD --> AW
+SSAD --> CM
+KA <--> AW : provides structure
+AW <--> CM : establishes stable baseline
+CM --> KA : updates affected owners
+@enduml

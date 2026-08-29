@@ -1,18 +1,24 @@
-# SSAD — System-Structured Analysis Documentation
+<div align="center">
 
-> **Version:** v0.1 — Foundation  
-> **Status:** Evolving methodology  
-> **First full validation case:** Aveli
+# SSAD
+
+### System-Structured Analysis Documentation
+
+**A system-oriented methodology for building, organizing, verifying, and evolving system-analysis knowledge.**
+
+![Version](https://img.shields.io/badge/version-v0.1.2-blue)
+![Status](https://img.shields.io/badge/status-evolving-orange)
+![Applications](https://img.shields.io/badge/real--world%20applications-1-success)
 
 [Русская версия](README.ru.md)
 
-## What SSAD Is
+</div>
 
-**System-Structured Analysis Documentation (SSAD)** is an approach to building, organizing, verifying, and evolving system-analysis knowledge around the real structure, responsibilities, boundaries, and dependencies of a system.
+---
 
-> **Documentation should mirror the system being analyzed.**
+## The idea
 
-Traditional documentation often grows by artifact type:
+Most documentation repositories are organized around **artifact types**:
 
 ```text
 requirements/
@@ -22,55 +28,107 @@ security/
 database/
 ```
 
-Real systems do not have that structure. One change may affect business rules, data, backend, frontend, security, integrations, acceptance, and verification at the same time.
+Real systems are not.
 
-SSAD therefore treats documentation as a **system knowledge model**, not as a folder of unrelated analyst deliverables.
+A single change can cross product rules, data ownership, interfaces, runtime components, integrations, security, acceptance, and verification.
 
-## The Three SSAD Models
+> **SSAD organizes knowledge around the system itself: its responsibilities, boundaries, owners, dependencies, and change impact.**
+
+<p align="center">
+  <img src="assets/ssad-model.svg" alt="SSAD model: Knowledge Architecture, Analysis Workflow, Change Model" width="100%">
+</p>
+
+---
+
+## Three models, one knowledge lifecycle
+
+| Model | Question | Focus |
+|---|---|---|
+| **Knowledge Architecture** | Where does knowledge belong? | perspectives, canonical ownership, references, synthesis |
+| **Analysis Workflow** | How is knowledge discovered and stabilized? | evidence, boundaries, ownership, modeling, verification |
+| **Change Model** | How does knowledge evolve with the system? | Change Surface, impact analysis, traceability, maintenance |
+
+SSAD is not only a repository structure and not only an analysis process. It is a way to manage **system knowledge through its lifecycle**.
+
+---
+
+## Examples and real-world applications
+
+SSAD deliberately separates **examples** from **applications**.
+
+### Examples
+
+`examples/` contains synthetic systems created specifically to explain or exercise the methodology.
+
+An example:
+
+- does not need to exist as a real product;
+- may use any architecture needed to illustrate a principle;
+- may intentionally simplify implementation details;
+- is not evidence that the described system was actually built;
+- can be designed to expose a particular ownership, boundary, data, integration, or change-analysis problem.
+
+Examples currently include:
+
+| Example | System shape | Main SSAD idea |
+|---|---|---|
+| [Mobile Application](examples/mobile-application/) | client + backend + local/server data | local/server ownership and synchronization boundary |
+| [Desktop Plugin](examples/desktop-plugin/) | plugin + host application + filesystem | host boundary without forced backend/frontend folders |
+| [Event-Driven Platform](examples/event-driven-platform/) | services + messaging + data + operations | distributed ownership and asynchronous contracts |
+
+### Applications
+
+`applications/` contains **real projects actually documented using SSAD**.
+
+Applications are practical evidence. They may reveal gaps, contradictions, or new methodology rules.
+
+Current real-world application:
+
+**Aveli** — local-first mobile workspace  
+[`applications/aveli/`](applications/aveli/) · [full project repository](https://github.com/branch-danya-dev/aveli-system-analysis)
+
+> **Examples illustrate SSAD. Applications exercise SSAD in real work.**
+
+---
+
+## Core principles
+
+| | |
+|---|---|
+| **Documentation mirrors the system.** | Structure follows real responsibilities and boundaries. |
+| **Ownership comes before detail.** | Contracts, schemas, states, and technology placement depend on ownership. |
+| **Perspectives are required; folder templates are not.** | Different systems may require different physical structures. |
+| **Canonical knowledge has one owner.** | Context may repeat; competing truth should not. |
+| **Storage is hierarchical; knowledge is graph-based.** | Folders provide ownership; references express relationships. |
+| **Evidence beats architectural preference.** | Existing-system truth is derived from evidence, not aesthetic preference. |
+| **System documentation is a synthesis layer.** | Cross-component knowledge is synthesized rather than duplicated. |
+| **Changes start with their Change Surface.** | Impact is mapped before downstream detail is rewritten. |
+
+Full set: [`specification/core-principles.md`](specification/core-principles.md)
+
+---
+
+## How analysis works
+
+<p align="center">
+  <img src="assets/analysis-workflow.svg" alt="SSAD analysis workflow" width="100%">
+</p>
 
 ```text
-WHERE does knowledge belong?
-        ↓
-Knowledge Architecture
-
-HOW is knowledge discovered and stabilized?
-        ↓
-Analysis Workflow
-
-HOW does knowledge change with the system?
-        ↓
-Change Model
+DISCOVER → BOUND → OWN → MODEL → CONNECT → SYNTHESIZE → VERIFY → STABILIZE → EVOLVE
 ```
 
-### Knowledge Architecture
+The sequence describes **knowledge dependencies, not waterfall phases**.
 
-Defines canonical ownership, analytical perspectives, cross-references, progressive depth, technology ownership, and system-level synthesis.
+A later discovery may reopen an earlier decision. The goal is not to prevent iteration; the goal is to prevent downstream detail from being treated as stable while its upstream assumptions remain unresolved.
 
-### Analysis Workflow
+Detailed workflow: [`workflow/construction.md`](workflow/construction.md)
 
-```text
-DISCOVER
-   ↓
-BOUND
-   ↓
-OWN
-   ↓
-MODEL
-   ↓
-CONNECT
-   ↓
-SYNTHESIZE
-   ↓
-VERIFY
-   ↓
-STABILIZE
-   ↓
-EVOLVE
-```
+---
 
-These stages express **knowledge dependencies, not bureaucracy**.
+## Change analysis
 
-### Change Model
+For an existing system, SSAD begins change analysis with the **Change Surface**.
 
 ```text
 Change Request
@@ -90,104 +148,86 @@ Verification
 Stable
 ```
 
-The central concept is the **Change Surface**: the set of system knowledge owners affected by a change.
+> **Which owners of system knowledge are affected by this change?**
 
-## Core Principles
+Detailed process: [`workflow/change-analysis.md`](workflow/change-analysis.md)
 
-1. **Documentation mirrors the system.**
-2. **Ownership comes before detail.**
-3. **Perspectives are required; folder templates are not.**
-4. **Canonical knowledge has one owner.**
-5. **Duplicate context when useful, not canonical truth.**
-6. **Storage is hierarchical; knowledge is graph-based.**
-7. **Data progresses from ownership to persistence.**
-8. **Technology is an analytical object.**
-9. **Evidence beats architectural preference.**
-10. **System documentation is a synthesis layer.**
-11. **Workflow stages represent dependency, not bureaucracy.**
-12. **Changes are analyzed through their Change Surface.**
+---
 
-Detailed rationale: [`specification/core-principles.md`](specification/core-principles.md)
+## Methodology evolution
 
-## Repository Structure
+SSAD evolves through real usage and explicit decisions.
 
 ```text
-ssad-methodology/
-├── README.md
-├── README.ru.md
-├── specification/
-├── workflow/
-├── cases/
-│   └── 001-aveli/
-├── decisions/
-├── proposals/
-├── templates/
-├── playbooks/
-├── assets/
-└── CHANGELOG.md
+Observed problem
+      ↓
+Example exploration and/or real application evidence
+      ↓
+Proposal
+      ↓
+Validation
+      ↓
+Accept / Reject / Revise
+      ↓
+Specification update
 ```
 
-This is the structure of the **methodology repository**, not a mandatory SSAD project template.
+Synthetic examples help explore consequences cheaply. Real-world applications provide stronger evidence because the methodology must survive actual project constraints.
 
-## Recommended Reading Path
+The first accepted methodology decision is:
 
-```text
-README
-  ↓
-specification/methodology.md
-  ↓
-specification/core-principles.md
-  ↓
-workflow/construction.md
-  ↓
-workflow/change-analysis.md
-  ↓
-workflow/verification.md
-  ↓
-cases/001-aveli/
-```
+**ADR-001 — Perspectives Over Folder Templates**
 
-## First Validation Case — Aveli
+[`decisions/ADR-001-perspectives-over-folder-templates.md`](decisions/ADR-001-perspectives-over-folder-templates.md)
 
-The first full validation case is **Aveli**, a local-first mobile workspace. It forced the methodology to address product rules, local/server data ownership, frontend/backend responsibility, internal vs external boundaries, technology ownership, offline behavior, traceability, system synthesis, legacy-documentation migration, and final consistency review.
+---
 
-Case summary: [`cases/001-aveli/`](cases/001-aveli/)
+## Start here
 
-Full project: https://github.com/branch-danya-dev/aveli-system-analysis
+| If you want to... | Read |
+|---|---|
+| understand SSAD quickly | [`specification/methodology.md`](specification/methodology.md) |
+| see the principles | [`specification/core-principles.md`](specification/core-principles.md) |
+| explore synthetic system shapes | [`examples/`](examples/) |
+| inspect real-world usage | [`applications/`](applications/) |
+| apply the construction workflow | [`workflow/construction.md`](workflow/construction.md) |
+| analyze a system change | [`workflow/change-analysis.md`](workflow/change-analysis.md) |
+| run a quality gate | [`workflow/verification.md`](workflow/verification.md) |
+| understand evidence and maturity | [`specification/evidence-and-maturity.md`](specification/evidence-and-maturity.md) |
+| follow methodology evolution | [`decisions/`](decisions/) and [`proposals/`](proposals/) |
 
-## What SSAD Does Not Replace
+---
+
+## What SSAD does not replace
 
 SSAD does not replace UML, BPMN, C4, ADRs, OpenAPI, database schemas, source code, tests, product management, operational runbooks, or architecture governance.
 
-SSAD defines **how these forms of knowledge can be owned, connected, constructed, reviewed, and evolved around the system itself**.
+It defines **how those forms of knowledge can be owned, connected, constructed, verified, and evolved around the system itself**.
 
-## Current Scope of v0.1
+---
 
-`v0.1` focuses on:
-
-```text
-methodology definition
-knowledge architecture
-analysis workflow
-change workflow
-evidence model
-maturity model
-roles and stewardship
-verification
-maintenance
-first validation case
-```
-
-Templates, practical playbooks, machine-readable metadata, automation, and additional validation cases are intentionally deferred.
-
-## Working Definition
-
-> **System-Structured Analysis Documentation is an evolving approach to building, organizing, verifying, and evolving system-analysis knowledge around the actual structure, responsibilities, boundaries, and dependencies of a system.**
-
-Current maturity:
+## Current maturity
 
 ```text
-SSAD v0.1
+SSAD v0.1.2
 Foundation
-First full validation case: Aveli
++ public presentation
++ examples/application separation
+
+Synthetic examples:
+mobile application
+desktop plugin
+event-driven platform
+
+Real-world applications:
+Aveli
+
+Next:
+additional real-world applications
+→ practical playbooks
+→ reusable templates
+→ machine-readable metadata
+→ automated consistency checks
 ```
+
+> SSAD is an evolving methodology. Its individual practices are not presented as universally novel; its value is in the system-oriented combination, explicit ownership model, workflow, change model, and validation through real projects.

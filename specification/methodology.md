@@ -103,16 +103,52 @@ System-level knowledge owns relationships no single component can own:
 - boundary-changing evolution;
 - whole-system failure scenarios.
 
+## Examples and Applications
+
+SSAD distinguishes two forms of methodology evidence and explanation.
+
+### Example
+
+An **Example** is synthetic or intentionally simplified.
+
+It MAY describe any plausible implementation needed to explain or explore the methodology.
+
+An example:
+
+- does not have to correspond to a real product;
+- may be deliberately shaped to expose one analytical problem;
+- is useful for teaching, comparison, and low-cost methodology exploration;
+- MUST NOT be presented as evidence that the described implementation exists.
+
+Examples live in [`../examples/`](../examples/).
+
+### Application
+
+An **Application** is a real project in which SSAD is actually used.
+
+An application:
+
+- has real project constraints and evidence;
+- links to real system-analysis documentation;
+- can reveal methodology defects that synthetic examples do not expose;
+- is stronger evidence of practical applicability.
+
+Applications live in [`../applications/`](../applications/).
+
+Current real-world application: [`../applications/aveli/`](../applications/aveli/)
+
 ## Methodology Evolution
 
 Preferred path:
 
 ```text
 Observed problem
+→ Example exploration and/or Application evidence
 → Proposed rule
-→ Application
 → Validation
 → Accepted methodology
 ```
 
-The first full validation case is Aveli: [`../cases/001-aveli/`](../cases/001-aveli/)
+Synthetic examples may explore consequences before a rule is accepted. Real applications should be used whenever available to validate that the rule survives actual project constraints.
+
+Significant accepted decisions belong in `decisions/`; unresolved methodology ideas belong in `proposals/`.

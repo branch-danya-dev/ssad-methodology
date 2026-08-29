@@ -1,0 +1,37 @@
+@startuml
+title SSAD — Построение знаний по зависимостям
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultTextAlignment center
+
+rectangle "DISCOVER\nПодтверждения" as D
+rectangle "BOUND\nГраницы" as B
+rectangle "OWN\nВладение" as O
+rectangle "MODEL\nМодели" as M
+rectangle "CONNECT\nСвязи" as C
+rectangle "SYNTHESIZE\nСинтез" as S
+rectangle "VERIFY\nПроверка" as V
+rectangle "STABILIZE\nСтабилизация" as ST
+rectangle "EVOLVE\nРазвитие" as E
+rectangle "АНАЛИЗ\nИЗМЕНЕНИЙ" as CH
+
+D --> B
+B --> O
+O --> M
+M --> C
+C --> S
+S --> V
+V --> ST
+ST --> E
+E --> CH
+
+V ..> O : противоречие может вернуть к владению
+V ..> M : подтверждение может изменить модель
+CH ..> B : изменение границы
+CH ..> O : изменение владения
+
+note bottom
+Этапы выражают зависимости знаний,
+а не каскадные фазы разработки.
+end note
+@enduml
