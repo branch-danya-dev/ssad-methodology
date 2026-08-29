@@ -160,7 +160,7 @@ A developer may be the best source for a fact about the current implementation w
 
 ## Real-world validation
 
-SSAD is currently documented against two materially different real systems.
+SSAD is currently documented against three materially different real systems.
 
 ### Aveli · product-shaped system
 
@@ -205,7 +205,36 @@ Evidence & Readiness
 Technical Projection
 ```
 
-The two applications deliberately have different repository structures.
+### Rebar AutoDim · host-application automation system
+
+**[branch-danya-dev/revit-rebar-autodim-analysis](https://github.com/branch-danya-dev/revit-rebar-autodim-analysis)**
+
+This application validates SSAD where the analyzed system executes inside Autodesk Revit and must separate host-owned validity/mechanics from plugin-owned analytical meaning.
+
+Compact route: **[`08-examples/revit-rebar-autodim/`](08-examples/revit-rebar-autodim/README.md)**
+
+```text
+Host Boundary
+        ↓
+View-Space Geometry
+        ↓
+Semantic Reference
+        ↓
+Generated Output Ownership
+```
+
+The three applications deliberately have different repository structures:
+
+```text
+Aveli
+→ product-shaped ownership
+
+Enterprise Workplace Migration
+→ distributed transformation ownership
+
+Rebar AutoDim
+→ host-authority + generated-state ownership
+```
 
 > **The shared methodology appears in the reasoning model, not in a mandatory folder tree.**
 
@@ -234,7 +263,7 @@ The central rule for future development is simple:
 
 > **New concepts should be driven by real analytical friction and evidence, not by a desire to complete a taxonomy.**
 
-The second materially different real-world application is now complete. The next validation work is to compare friction points across the applications, continue testing meaningful changes, stabilize terminology/navigation and complete publication/release hygiene.
+Three contrasting real-world applications now cover product-shaped software, distributed enterprise transformation and host-application automation. Further validation should be added only when it tests a materially different unresolved risk, while current work focuses on comparing friction points, validating meaningful changes, stabilizing terminology/navigation and completing publication/release hygiene.
 
 ---
 
