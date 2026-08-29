@@ -21,7 +21,17 @@ Foundation
 → Examples
 ```
 
-Следующий этап — validation и stabilization.
+Теперь задокументированы два существенно разных real-world applications:
+
+```text
+Aveli
+→ product-shaped software system
+
+Enterprise Workplace Migration
+→ distributed enterprise transformation / existing-system migration
+```
+
+Текущая фаза — **comparative validation и stabilization**: проверить, какие принципы остаются стабильными на обеих системах, собирать friction points и менять ядро только когда этого требует evidence.
 
 ## Что должно означать v1.0
 
@@ -42,11 +52,16 @@ SSAD v1.0 должна означать:
 #### 2. Проверка на реальных системах
 
 - [ ] Aveli продолжает подтверждать методологию после существенных изменений системы.
-- [ ] Добавлен хотя бы один дополнительный real-world кейс с существенно другой структурой.
-- [ ] Хотя бы один integration-heavy или event-driven кейс проверяет cross-boundary reasoning.
-- [ ] Хотя бы один existing-system / migration кейс проверяет Change Surface, compatibility и selective reopening.
+- [x] Добавлен хотя бы один дополнительный real-world кейс с существенно другой структурой.
+- [x] Хотя бы один integration-heavy или event-driven кейс проверяет cross-boundary reasoning.
+- [x] Хотя бы один existing-system / migration кейс проверяет Change Surface, compatibility и selective reopening.
 
-Второй реальный проект важнее большого количества синтетических примеров: он показывает, умеет ли SSAD обобщаться за пределы системы, которая помогала её формировать.
+Validation evidence теперь включает:
+
+- [`08-examples/aveli/`](08-examples/aveli/) — product boundaries, access ownership и bounded offline trust;
+- [`08-examples/enterprise-workplace-migration/`](08-examples/enterprise-workplace-migration/) — distributed responsibility, readiness evidence, state decomposition, migration/change reasoning и ownership-aware technical projection.
+
+Второй application важен потому, что SSAD создала для него system-shaped repository, совсем не похожий на Aveli, но сохранила те же reasoning principles.
 
 #### 3. Качество обучения
 
@@ -80,25 +95,29 @@ SSAD v1.0 должна означать:
 
 ## Ближайшие приоритеты
 
-### P0 — проверять, а не расширять
+### P0 — сравнивать, проверять, не расширять
 
-1. применять SSAD к реальным изменениям Aveli;
-2. собирать friction points при реальной работе;
-3. искать неоднозначности, дубли и отсутствующие reasoning steps;
+1. продолжать применять SSAD к существенным изменениям Aveli и другим реальным системам;
+2. сравнивать friction points product-shaped и transformation-shaped applications;
+3. искать неоднозначности, дубли и отсутствующие reasoning steps, повторяющиеся между кейсами;
 4. исправлять только проблемы, подтверждённые evidence.
 
-### P1 — второй real-world кейс
+### P1 — расширять validation только ради нового риска
 
-Выбрать систему, которая существенно отличается от Aveli.
+Milestone второго real-world application выполнен.
 
-Хорошие кандидаты:
+Третий кейс имеет смысл только если проверяет существенно новую проблему, а не добавляет ещё одну витрину.
 
-- enterprise migration / workplace platform;
-- event-driven backend platform;
+Возможные будущие формы validation:
+
+- strongly event-driven backend platform;
 - desktop или host-application plugin ecosystem;
-- integration-heavy internal service.
+- integration-heavy internal service с versioned contracts;
+- система со значимой data migration или distributed consistency.
 
-Цель — не ещё одна витрина. Цель — найти места, где текущая модель SSAD изгибается или ломается.
+Вопрос теперь не «есть ли у нас ещё один кейс?», а:
+
+> **Какое ещё непроверенное свойство системы способно сломать текущую модель SSAD?**
 
 ### P2 — contribution и release hygiene
 
@@ -123,7 +142,7 @@ SSAD сейчас **не планирует** отдельную top-level гл�
 
 Эти инструменты могут появляться внутри соответствующих системных вопросов и примеров.
 
-Новая область методологии должна появляться только тогда, когда у неё есть отдельная аналитическая ответственность, которую нельзя чисто разместить в существующей модели.
+Новая область методологии должна появиться только тогда, когда у неё есть отдельная аналитическая ответственность, которую нельзя чисто разместить в существующей модели.
 
 ## Как принимать новые roadmap items
 

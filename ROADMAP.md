@@ -21,7 +21,17 @@ Foundation
 → Examples
 ```
 
-The next phase is validation and stabilization.
+Two materially different real-world applications are now documented:
+
+```text
+Aveli
+→ product-shaped software system
+
+Enterprise Workplace Migration
+→ distributed enterprise transformation / existing-system migration
+```
+
+The current phase is therefore **comparative validation and stabilization**: identify what remains stable across both systems, collect friction points and change the core only when evidence requires it.
 
 ## What v1.0 should mean
 
@@ -42,11 +52,16 @@ SSAD v1.0 should mean:
 #### 2. Real-world validation
 
 - [ ] Aveli continues to validate the methodology after meaningful system changes.
-- [ ] At least one additional real-world system with a substantially different shape is documented as validation evidence.
-- [ ] At least one integration-heavy or event-driven case tests cross-boundary reasoning.
-- [ ] At least one existing-system / migration case tests Change Surface, compatibility and selective reopening.
+- [x] At least one additional real-world system with a substantially different shape is documented as validation evidence.
+- [x] At least one integration-heavy or event-driven case tests cross-boundary reasoning.
+- [x] At least one existing-system / migration case tests Change Surface, compatibility and selective reopening.
 
-A second project matters more than many synthetic examples because it tests whether SSAD generalizes beyond the structure that helped create it.
+Validation evidence now includes:
+
+- [`08-examples/aveli/`](08-examples/aveli/) — product boundaries, access ownership and bounded offline trust;
+- [`08-examples/enterprise-workplace-migration/`](08-examples/enterprise-workplace-migration/) — distributed responsibility, readiness evidence, state decomposition, migration/change reasoning and ownership-aware technical projection.
+
+The second application matters because it demonstrates that SSAD can produce a system-shaped repository that looks nothing like Aveli while preserving the same reasoning principles.
 
 #### 3. Learning quality
 
@@ -80,25 +95,29 @@ A second project matters more than many synthetic examples because it tests whet
 
 ## Near-term priorities
 
-### P0 — validate, do not expand
+### P0 — compare, validate, do not expand
 
-1. use SSAD on real changes in Aveli;
-2. collect friction points while using the methodology;
-3. identify ambiguity, duplication and missing reasoning steps;
+1. keep using SSAD on meaningful changes in Aveli and other real systems;
+2. compare friction points between product-shaped and transformation-shaped applications;
+3. identify ambiguity, duplication and missing reasoning steps that repeat across cases;
 4. fix only issues supported by evidence.
 
-### P1 — second real-world case
+### P1 — broaden validation only when it tests a new risk
 
-Choose a system that differs materially from Aveli.
+The second real-world application milestone is complete.
 
-Good candidates include:
+A third case is useful only if it tests a materially new concern rather than adding another showcase.
 
-- enterprise migration / workplace platform;
-- event-driven backend platform;
+Possible future validation shapes include:
+
+- strongly event-driven backend platform;
 - desktop or host-application plugin ecosystem;
-- integration-heavy internal service.
+- integration-heavy internal service with versioned contracts;
+- system with significant data migration or distributed consistency concerns.
 
-The goal is not another showcase. The goal is to find where the current model bends or breaks.
+The question is no longer “do we have another case?” but:
+
+> **Which untested system property could still break the current SSAD model?**
 
 ### P2 — contribution and release hygiene
 

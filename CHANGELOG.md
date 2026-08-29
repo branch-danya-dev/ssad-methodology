@@ -2,7 +2,7 @@
 
 ## Unreleased — Reader-first methodology
 
-Completed the migration from the research-oriented SSAD structure to one active reader-first methodology tree.
+Completed the migration from the research-oriented SSAD structure to one active reader-first methodology tree and expanded real-world validation beyond a single system shape.
 
 ### Added
 
@@ -13,7 +13,33 @@ Completed the migration from the research-oriented SSAD structure to one active 
 - `05-collaboration/` — contribution, validation, decision resolution and feedback loops;
 - `06-change/` — impact analysis, compatibility and selective reopening;
 - `07-practice/` — task-based daily checklists;
-- `08-examples/` — real-world Aveli validation slices.
+- `08-examples/aveli/` — product-shaped real-world validation through repository structure, access ownership and offline trust;
+- `08-examples/enterprise-workplace-migration/` — transformation-shaped real-world validation through responsibility structure, global-status decomposition, distributed readiness evidence and ownership-aware technical projection.
+
+### Real-world validation
+
+The second materially different application validates SSAD against an enterprise workplace migration rather than a conventional software product.
+
+It demonstrated that the same SSAD reasoning model can produce a different system-shaped knowledge architecture:
+
+```text
+Aveli
+→ business / backend / frontend / database / integrations / system
+
+Enterprise Workplace Migration
+→ system / workplace / readiness / planning / execution / exceptions / integrations / technical-projection
+```
+
+Important evidence from the enterprise application:
+
+- one global `migration_status` hid several independently owned state dimensions;
+- distributed cross-team evidence did not remove the need for one explicit readiness owner;
+- `MigrationSchedule` and `MigrationAttempt` required separate histories;
+- technical installation success did not prove operational migration completion;
+- canonical ownership changed the synthetic REST and PostgreSQL projections, not only the documentation tree;
+- derived operational views could combine several owners without becoming a second source of truth.
+
+The roadmap now marks the materially different second case, integration-heavy cross-boundary validation and existing-system/migration validation criteria as completed.
 
 ### Quality pass
 

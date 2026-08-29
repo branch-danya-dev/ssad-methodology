@@ -1,37 +1,39 @@
-# 08 · Examples
+# 08 · Examples and Applications
 
 [Русская версия](README.ru.md)
 
-This section shows **what SSAD looks like in practice and whether it survives contact with a real system**.
+This section shows **what SSAD looks like in practice and whether it survives contact with different real systems**.
 
-Examples are not a showcase and not a collection of templates to copy.
+Examples and applications are not a showcase and not a collection of templates to copy.
 
-Their purpose is to demonstrate that the principles from the previous sections combine into one workable analysis model.
+Their purpose is to test whether the principles from the previous sections combine into a workable analysis model across systems with different shapes.
 
-## Two kinds of examples
+## Two kinds of validation material
 
 ```text
-Synthetic
+Synthetic example
 → inexpensive exploration of one focused idea
 
-Real-world
+Real-world application
 → validation against an actual system,
   real constraints and real ownership
 ```
 
-Synthetic examples are useful for teaching an isolated concept.
+Synthetic examples are useful for teaching isolated concepts.
 
-The methodology itself should be validated by real-world cases.
+The methodology itself should be validated by multiple real-world applications.
 
-## Primary real-world case: Aveli
+## Real-world applications
+
+### Aveli · product-shaped system
 
 Full repository:
 
 https://github.com/branch-danya-dev/aveli-system-analysis
 
-Aveli is not used because its folder tree is a “correct SSAD template.”
+Aveli validates SSAD on a software product containing frontend, backend, local professional data, server-owned access, billing, offline trust and external integrations.
 
-It demonstrates the opposite: the knowledge structure emerged from this system's actual responsibility areas.
+Its knowledge structure emerged from its own responsibility areas:
 
 ```text
 business/
@@ -42,55 +44,103 @@ integrations/
 system/
 ```
 
-## Learning route
-
-[`aveli/`](aveli/) contains three connected slices:
+Compact application route:
 
 ```text
-1. Repository Structure
-   ↓
-how responsibility boundaries become knowledge structure
-
-2. Access Ownership
-   ↓
-how evidence, ownership, integration and flow are separated
-
-3. Offline Trust
-   ↓
-how trust, states, failures and invariants combine into system behavior
+Repository Structure
+        ↓
+Access Ownership
+        ↓
+Offline Trust
+        ↓
+System Synthesis
 ```
 
-Together they form one end-to-end path:
+→ [`Aveli · end-to-end application`](aveli/README.md)
+
+### Enterprise Workplace Migration · transformation-shaped system
+
+Full repository:
+
+https://github.com/branch-danya-dev/enterprise-workplace-os-migration
+
+This case validates SSAD on a distributed enterprise migration programme where no single application owns the whole system.
+
+Its responsibility areas are different from Aveli:
 
 ```text
-SYSTEM STRUCTURE
-↓
-CANONICAL OWNERSHIP
-↓
-CROSS-BOUNDARY FLOW
-↓
-TRUST & FAILURE POLICY
-↓
-SYSTEM SYNTHESIS
+system/
+workplace/
+readiness/
+planning/
+execution/
+exceptions/
+integrations/
+technical-projection/
 ```
 
-## Main rule for examples
+Compact application route:
 
-An example may:
+```text
+Responsibility Structure
+        ↓
+Global Status Decomposition
+        ↓
+Evidence & Readiness
+        ↓
+Technical Projection
+```
+
+→ [`Enterprise Workplace Migration · application`](enterprise-workplace-migration/README.md)
+
+## Why the two applications matter together
+
+The value is not that both repositories look similar. They deliberately do not.
+
+```text
+Aveli
+→ product boundaries
+→ frontend/backend/local-data ownership
+→ billing evidence vs access authority
+→ bounded offline trust
+
+Enterprise migration
+→ distributed operational boundaries
+→ cross-team evidence
+→ readiness as aggregate decision
+→ planning vs execution separation
+→ exception/recovery paths
+→ technical projection corrected by domain ownership
+```
+
+The shared methodology appears in the reasoning model, not in a mandatory folder tree.
+
+> **Same analytical principles. Different system-shaped knowledge architecture.**
+
+## Main rule for applications
+
+An application may:
 
 - simplify context;
 - isolate one analytical question;
 - show a diagram;
-- explain the reasoning path.
+- explain the reasoning path;
+- compare the model before and after applying SSAD.
 
 But it must not become a second canonical version of project knowledge.
 
-> **Theory is explained through an example. Project truth remains with its canonical owner.**
+> **Theory is explained through an application. Project truth remains with its canonical owner.**
 
-Each Aveli slice therefore links back to the full repository and the relevant SSAD chapters.
+Each application therefore links back to the full project repository and the relevant SSAD chapters.
 
-## Start
+## Choose a route
 
-→ [`Aveli · end-to-end example`](aveli/README.md)
+```text
+Want a software-product case?
+→ Aveli
+
+Want an enterprise migration / distributed-ownership case?
+→ Enterprise Workplace Migration
+```
 
 Back to: [`README.md`](../README.md)

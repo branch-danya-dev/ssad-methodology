@@ -7,7 +7,7 @@
 **A practical system-analysis methodology for real delivery:**  
 from the first request and requirements to implementation, verification and current system knowledge.
 
-[Русская версия](README.ru.md) · [Start with Foundation](01-foundation/README.md) · [Open Practice](07-practice/README.md) · [See Aveli](08-examples/aveli/README.md)
+[Русская версия](README.ru.md) · [Start with Foundation](01-foundation/README.md) · [Open Practice](07-practice/README.md) · [See real applications](08-examples/README.md)
 
 </div>
 
@@ -48,7 +48,7 @@ SSAD does not prescribe a universal `requirements/`, `api/`, `database/`, `diagr
 | review a solution and work with the team | [`05 · Collaboration`](05-collaboration/README.md) |
 | assess the impact of a change | [`06 · Change`](06-change/README.md) |
 | get a short working checklist | [`07 · Practice`](07-practice/README.md) |
-| see SSAD applied to a real system | [`08 · Examples`](08-examples/README.md) |
+| see SSAD applied to real systems | [`08 · Examples and Applications`](08-examples/README.md) |
 
 ### Recommended first read
 
@@ -65,7 +65,7 @@ Collaboration
    ↓
 Change
    ↓
-Practice + Examples
+Practice + Applications
 ```
 
 Already working on a concrete task? You do not need to read the repository front to back. Open [`07-practice/`](07-practice/README.md) and follow the checklist into the deeper chapters you need.
@@ -158,33 +158,56 @@ A developer may be the best source for a fact about the current implementation w
 
 ---
 
-## Real-world validation: Aveli
+## Real-world validation
 
-The primary real-world SSAD case is **Aveli**:
+SSAD is currently documented against two materially different real systems.
+
+### Aveli · product-shaped system
 
 **[branch-danya-dev/aveli-system-analysis](https://github.com/branch-danya-dev/aveli-system-analysis)**
 
-Aveli validates SSAD against a real system containing:
+Aveli validates SSAD against:
 
-- a Flutter frontend;
-- backend-controlled account and access;
-- a local professional workspace;
-- RevenueCat and store billing;
-- offline trust;
-- external integrations;
-- failure behavior and end-to-end flows.
+- Flutter frontend and backend boundaries;
+- local professional data;
+- server-controlled account and access;
+- RevenueCat/store billing evidence;
+- bounded offline trust;
+- integrations, failures and end-to-end flows.
 
-Start with the compact walkthrough: **[`08-examples/aveli/`](08-examples/aveli/README.md)**.
+Compact route: **[`08-examples/aveli/`](08-examples/aveli/README.md)**
 
 ```text
-Repository structure
+Repository Structure
         ↓
-Access ownership
+Access Ownership
         ↓
-Offline trust
+Offline Trust
         ↓
-System synthesis
+System Synthesis
 ```
+
+### Enterprise Workplace Migration · transformation-shaped system
+
+**[branch-danya-dev/enterprise-workplace-os-migration](https://github.com/branch-danya-dev/enterprise-workplace-os-migration)**
+
+This application validates SSAD against a distributed enterprise migration where the system crosses workplaces, support domains, infrastructure tooling, planning and operational recovery.
+
+Compact route: **[`08-examples/enterprise-workplace-migration/`](08-examples/enterprise-workplace-migration/README.md)**
+
+```text
+Responsibility Structure
+        ↓
+Global Status Decomposition
+        ↓
+Evidence & Readiness
+        ↓
+Technical Projection
+```
+
+The two applications deliberately have different repository structures.
+
+> **The shared methodology appears in the reasoning model, not in a mandatory folder tree.**
 
 ---
 
@@ -202,7 +225,7 @@ It answers a different question:
 
 ## Project direction and contributions
 
-SSAD is now in a **validation and stabilization** phase rather than a chapter-expansion phase.
+SSAD is now in a **comparative validation and stabilization** phase rather than a chapter-expansion phase.
 
 - Want to contribute? Read [`CONTRIBUTING.md`](CONTRIBUTING.md).
 - Want to see what “v1.0 ready” means? Read [`ROADMAP.md`](ROADMAP.md).
@@ -211,7 +234,7 @@ The central rule for future development is simple:
 
 > **New concepts should be driven by real analytical friction and evidence, not by a desire to complete a taxonomy.**
 
-The current v1.0 direction prioritizes a second real-world validation case, continued use on Aveli changes, terminology/navigation stability, and an intentional publication license.
+The second materially different real-world application is now complete. The next validation work is to compare friction points across the applications, continue testing meaningful changes, stabilize terminology/navigation and complete publication/release hygiene.
 
 ---
 
@@ -225,7 +248,7 @@ The current v1.0 direction prioritizes a second real-world validation case, cont
 05-collaboration/       team ↔ knowledge loop
 06-change/              change mechanics
 07-practice/            task-based checklists
-08-examples/            real-world validation
+08-examples/            examples + real-world applications
 assets/                 supporting visuals
 ```
 
@@ -237,7 +260,7 @@ Historical structures remain available in Git history rather than competing with
 
 **Start:** [`01 · Foundation`](01-foundation/README.md)  
 **Have a task right now:** [`07 · Practice`](07-practice/README.md)  
-**Want to see a real project:** [`08 · Aveli`](08-examples/aveli/README.md)  
+**Want to see real applications:** [`08 · Examples and Applications`](08-examples/README.md)  
 **Contribute:** [`CONTRIBUTING`](CONTRIBUTING.md) · **Direction:** [`ROADMAP`](ROADMAP.md)
 
 </div>
