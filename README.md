@@ -200,6 +200,21 @@ It answers a different question:
 
 ---
 
+## Project direction and contributions
+
+SSAD is now in a **validation and stabilization** phase rather than a chapter-expansion phase.
+
+- Want to contribute? Read [`CONTRIBUTING.md`](CONTRIBUTING.md).
+- Want to see what “v1.0 ready” means? Read [`ROADMAP.md`](ROADMAP.md).
+
+The central rule for future development is simple:
+
+> **New concepts should be driven by real analytical friction and evidence, not by a desire to complete a taxonomy.**
+
+The current v1.0 direction prioritizes a second real-world validation case, continued use on Aveli changes, terminology/navigation stability, and an intentional publication license.
+
+---
+
 ## Active repository structure
 
 ```text
@@ -222,6 +237,7 @@ Historical structures remain available in Git history rather than competing with
 
 **Start:** [`01 · Foundation`](01-foundation/README.md)  
 **Have a task right now:** [`07 · Practice`](07-practice/README.md)  
-**Want to see a real project:** [`08 · Aveli`](08-examples/aveli/README.md)
+**Want to see a real project:** [`08 · Aveli`](08-examples/aveli/README.md)  
+**Contribute:** [`CONTRIBUTING`](CONTRIBUTING.md) · **Direction:** [`ROADMAP`](ROADMAP.md)
 
 </div>

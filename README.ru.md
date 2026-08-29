@@ -200,6 +200,21 @@ SSAD совместима с существующими инженерными �
 
 ---
 
+## Развитие проекта и contributions
+
+SSAD сейчас находится в фазе **validation и stabilization**, а не бесконечного добавления новых глав.
+
+- Хочешь участвовать в развитии? Открой [`CONTRIBUTING.ru.md`](CONTRIBUTING.ru.md).
+- Хочешь понять, что именно будет означать готовность к v1.0? Открой [`ROADMAP.ru.md`](ROADMAP.ru.md).
+
+Главное правило дальнейшего развития:
+
+> **Новые концепты должны появляться из реальных аналитических friction points и evidence, а не из желания закончить классификацию.**
+
+Текущий путь к v1.0 делает приоритетом второй real-world validation case, дальнейшее применение SSAD к изменениям Aveli, стабильность терминологии и навигации, а также осознанный выбор publication license.
+
+---
+
 ## Активная структура репозитория
 
 ```text
@@ -222,6 +237,7 @@ assets/                 supporting visuals
 
 **Начать:** [`01 · Foundation`](01-foundation/README.ru.md)  
 **Есть задача прямо сейчас:** [`07 · Practice`](07-practice/README.ru.md)  
-**Хочется увидеть реальный проект:** [`08 · Aveli`](08-examples/aveli/README.ru.md)
+**Хочется увидеть реальный проект:** [`08 · Aveli`](08-examples/aveli/README.ru.md)  
+**Участвовать:** [`CONTRIBUTING`](CONTRIBUTING.ru.md) · **Направление:** [`ROADMAP`](ROADMAP.ru.md)
 
 </div>
