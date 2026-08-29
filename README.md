@@ -6,7 +6,7 @@
 
 **A system-oriented methodology for building, organizing, verifying, and evolving system-analysis knowledge.**
 
-![Version](https://img.shields.io/badge/version-v0.2.0-blue)
+![Version](https://img.shields.io/badge/version-v0.3.0-blue)
 ![Status](https://img.shields.io/badge/status-evolving-orange)
 ![Applications](https://img.shields.io/badge/real--world%20applications-1-success)
 
@@ -52,6 +52,40 @@ SSAD is not only a repository structure and not only an analysis process. It is 
 
 ---
 
+## Choose a playbook
+
+The methodology now includes practical playbooks for the three most common starting conditions.
+
+```text
+Do you have a real existing system?
+        │
+        ├── NO
+        │    ↓
+        │  NEW SYSTEM
+        │
+        └── YES
+             │
+             ├── Is its analytical baseline trustworthy?
+             │        │
+             │        ├── NO → EXISTING SYSTEM
+             │        │
+             │        └── YES
+             │              ↓
+             └─────────── CHANGE
+```
+
+| Situation | Playbook |
+|---|---|
+| new product, service, plugin, platform, or major greenfield subsystem | [`playbooks/new-system.md`](playbooks/new-system.md) |
+| running system with incomplete, fragmented, stale, or implementation-shaped knowledge | [`playbooks/existing-system.md`](playbooks/existing-system.md) |
+| new feature, rule, integration, technology replacement, or architecture change against an existing baseline | [`playbooks/change.md`](playbooks/change.md) |
+
+Quick decision guide: [`playbooks/quick-reference.md`](playbooks/quick-reference.md)
+
+> **Playbooks guide the work. They do not prescribe the final repository tree.**
+
+---
+
 ## Examples and real-world applications
 
 SSAD deliberately separates **examples** from **applications**.
@@ -66,7 +100,7 @@ SSAD deliberately separates **examples** from **applications**.
 | [Desktop Plugin](examples/desktop-plugin/) | plugin + host application + filesystem | full SSAD workflow, system-shaped baseline, Change Surface | **worked** |
 | [Event-Driven Platform](examples/event-driven-platform/) | services + messaging + data + operations | distributed ownership and asynchronous contracts | focused |
 
-The **Desktop Plugin worked example** is the recommended practical walkthrough:
+The Desktop Plugin worked example demonstrates:
 
 ```text
 analysis workflow
@@ -81,10 +115,6 @@ new request
         ↓
 changes/dms-upload/
 ```
-
-It demonstrates an important SSAD distinction:
-
-> **The workflow describes how knowledge is constructed. The baseline structure describes who owns the resulting knowledge.**
 
 ### Applications
 
@@ -128,8 +158,6 @@ DISCOVER → BOUND → OWN → MODEL → CONNECT → SYNTHESIZE → VERIFY → S
 
 The sequence describes **knowledge dependencies, not waterfall phases**.
 
-A later discovery may reopen an earlier decision. The goal is not to prevent iteration; the goal is to prevent downstream detail from being treated as stable while its upstream assumptions remain unresolved.
-
 Detailed workflow: [`workflow/construction.md`](workflow/construction.md)  
 Worked example: [`examples/desktop-plugin/walkthrough/`](examples/desktop-plugin/walkthrough/)
 
@@ -137,7 +165,7 @@ Worked example: [`examples/desktop-plugin/walkthrough/`](examples/desktop-plugin
 
 ## Change analysis
 
-For an existing system, SSAD begins change analysis with the **Change Surface**.
+For an existing baseline, SSAD begins a material change with the **Change Surface**.
 
 ```text
 Change Request
@@ -158,6 +186,7 @@ Stable
 ```
 
 Detailed process: [`workflow/change-analysis.md`](workflow/change-analysis.md)  
+Operational playbook: [`playbooks/change.md`](playbooks/change.md)  
 Worked change: [`examples/desktop-plugin/changes/dms-upload/`](examples/desktop-plugin/changes/dms-upload/)
 
 ---
@@ -192,10 +221,11 @@ The first accepted methodology decision is:
 |---|---|
 | understand SSAD quickly | [`specification/methodology.md`](specification/methodology.md) |
 | see the principles | [`specification/core-principles.md`](specification/core-principles.md) |
-| **follow SSAD from discovery to Stable** | [`examples/desktop-plugin/walkthrough/`](examples/desktop-plugin/walkthrough/) |
-| inspect the stable output of that workflow | [`examples/desktop-plugin/baseline/`](examples/desktop-plugin/baseline/) |
-| see Change Surface in practice | [`examples/desktop-plugin/changes/dms-upload/`](examples/desktop-plugin/changes/dms-upload/) |
-| explore other synthetic system shapes | [`examples/`](examples/) |
+| **use SSAD on a new system** | [`playbooks/new-system.md`](playbooks/new-system.md) |
+| **reconstruct an existing system** | [`playbooks/existing-system.md`](playbooks/existing-system.md) |
+| **analyze a change** | [`playbooks/change.md`](playbooks/change.md) |
+| follow SSAD from discovery to Stable | [`examples/desktop-plugin/walkthrough/`](examples/desktop-plugin/walkthrough/) |
+| inspect stable system-shaped documentation | [`examples/desktop-plugin/baseline/`](examples/desktop-plugin/baseline/) |
 | inspect real-world usage | [`applications/`](applications/) |
 | run a quality gate | [`workflow/verification.md`](workflow/verification.md) |
 | follow methodology evolution | [`decisions/`](decisions/) and [`proposals/`](proposals/) |
@@ -213,21 +243,26 @@ It defines **how those forms of knowledge can be owned, connected, constructed, 
 ## Current maturity
 
 ```text
-SSAD v0.2.0
+SSAD v0.3.0
 
-Foundation                 ✓
-Public presentation        ✓
-Examples / applications    ✓
-First worked example       ✓
-Change Surface walkthrough ✓
+Foundation                    ✓
+Public presentation           ✓
+Examples / applications       ✓
+Worked example                ✓
+Change Surface walkthrough    ✓
+Operational playbooks         ✓
+
+Core playbooks:
+new system
+existing system
+change
 
 Real-world applications:
 Aveli
 
 Next:
-extract practical playbooks from the worked example
-→ reusable templates
-→ additional real-world applications
+extract reusable templates from repeated playbook outputs
+→ validate playbooks on additional real-world applications
 → machine-readable metadata
 → automated consistency checks
 ```

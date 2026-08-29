@@ -152,3 +152,30 @@ Observed problem
 Synthetic examples may explore consequences before a rule is accepted. Real applications should be used whenever available to validate that the rule survives actual project constraints.
 
 Significant accepted decisions belong in `decisions/`; unresolved methodology ideas belong in `proposals/`.
+
+## Operational Playbooks
+
+Playbooks are a practical guidance layer built on top of the canonical workflow.
+
+They do not define new system perspectives and do not prescribe repository structure.
+
+They map common starting conditions to the parts of the SSAD workflow that deserve the most attention:
+
+```text
+new system
+→ establish boundary and ownership before dependent design
+
+existing system
+→ reconstruct current truth from evidence before target-state work
+
+change
+→ identify Change Surface and reopen only affected knowledge
+```
+
+The current core playbooks are:
+
+- [`../playbooks/new-system.md`](../playbooks/new-system.md)
+- [`../playbooks/existing-system.md`](../playbooks/existing-system.md)
+- [`../playbooks/change.md`](../playbooks/change.md)
+
+> **Workflow is normative methodology structure. Playbooks are operational guidance for applying it.**
