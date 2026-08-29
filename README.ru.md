@@ -252,21 +252,6 @@ SSAD совместима с существующими инженерными �
 
 ---
 
-## Развитие проекта и contributions
-
-SSAD сейчас находится в фазе **comparative validation и stabilization**, а не бесконечного добавления новых глав.
-
-- Хочешь участвовать в развитии? Открой [`CONTRIBUTING.ru.md`](CONTRIBUTING.ru.md).
-- Хочешь понять, что именно будет означать готовность к v1.0? Открой [`ROADMAP.ru.md`](ROADMAP.ru.md).
-
-Главное правило дальнейшего развития:
-
-> **Новые концепты должны появляться из реальных аналитических friction points и evidence, а не из желания закончить классификацию.**
-
-Три контрастных real-world applications теперь покрывают product-shaped software, distributed enterprise transformation и host-application automation. Новые validation cases стоит добавлять только ради существенно другого непроверенного риска, а текущая работа должна фокусироваться на сравнении friction points, проверке значимых изменений, стабилизации терминологии/навигации и publication/release hygiene.
-
----
-
 ## Активная структура репозитория
 
 ```text
