@@ -2,29 +2,37 @@
 
 [Русская версия](README.ru.md)
 
-This directory contains presentation-level visuals for the methodology.
+`assets/` contains supporting visual materials and their editable sources.
 
-## Current Visuals
+They exist for presentation and methodology development, but **they are not an independent canonical knowledge layer**.
 
-| Asset | Purpose |
-|---|---|
-| [`ssad-model.svg`](ssad-model.svg) | The three-model SSAD overview |
-| [`analysis-workflow.svg`](analysis-workflow.svg) | Dependency-driven construction workflow |
+## Where the current meaning lives
 
-Localized rendered versions:
+Canonical definitions live in the reader-first sections:
 
 ```text
-ssad-model.ru.svg
-analysis-workflow.ru.svg
+01-foundation/
+02-workflow/
+03-analysis/
+04-knowledge-structure/
+05-collaboration/
+06-change/
+07-practice/
+08-examples/
 ```
 
-Machine-maintainable sources are stored beside the rendered assets:
+If a visual diverges from the corresponding chapter, the chapter is canonical.
+
+## Formats
 
 ```text
-ssad-model.puml
-ssad-model.ru.puml
-analysis-workflow.puml
-analysis-workflow.ru.puml
+*.puml
+→ editable PlantUML sources
+
+*.svg
+→ prepared presentation renders
 ```
 
-Rendered visuals are presentation artifacts. The normative meaning remains in `specification/` and `workflow/`.
+The root `README.md` uses Mermaid for the primary public diagrams so the visuals remain next to the current explanation of the methodology.
+
+> **A visualization helps explain knowledge. The corresponding SSAD chapter remains its canonical owner.**
