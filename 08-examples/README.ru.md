@@ -93,9 +93,45 @@ Technical Projection
 
 → [`Enterprise Workplace Migration · application`](enterprise-workplace-migration/README.ru.md)
 
-## Почему два application важны вместе
+### Rebar AutoDim · host-application automation system
 
-Ценность не в том, что оба репозитория выглядят одинаково. Наоборот, они намеренно разные.
+Полный репозиторий:
+
+https://github.com/branch-danya-dev/revit-rebar-autodim-analysis
+
+Rebar AutoDim проверяет SSAD на плагине, который выполняется внутри Autodesk Revit, потребляет host-owned geometry и API capabilities и создаёт собственное regenerable native annotation state.
+
+Его responsibility areas появились из совсем другого набора системных вопросов:
+
+```text
+system/
+execution-context/
+geometry/
+references/
+layout/
+annotations/
+regeneration/
+revit-boundary/
+evidence/
+```
+
+Компактный маршрут:
+
+```text
+Host Boundary
+        ↓
+View-Space Geometry
+        ↓
+Semantic Reference
+        ↓
+Generated Output Ownership
+```
+
+→ [`Rebar AutoDim · application`](revit-rebar-autodim/README.ru.md)
+
+## Почему три application важны вместе
+
+Ценность не в том, что репозитории выглядят одинаково. Наоборот, они намеренно разные.
 
 ```text
 Aveli
@@ -111,11 +147,20 @@ Enterprise migration
 → planning vs execution separation
 → exception/recovery paths
 → technical projection corrected by domain ownership
+
+Rebar AutoDim
+→ host-application boundary
+→ view-context-dependent geometry meaning
+→ semantic target vs API representation
+→ generated-state ownership
+→ transaction-scoped failure isolation
 ```
 
 Общая методология проявляется в reasoning model, а не в обязательном дереве директорий.
 
 > **Одинаковые аналитические принципы. Разная system-shaped knowledge architecture.**
+
+Третий application добавляет ещё один тип validation: host может владеть native validity и execution mechanics, но при этом не владеть аналитическим смыслом plugin.
 
 ## Главное правило applications
 
@@ -141,6 +186,9 @@ Application может:
 
 Нужен enterprise migration / distributed-ownership кейс?
 → Enterprise Workplace Migration
+
+Нужен host-application / plugin кейс?
+→ Rebar AutoDim
 ```
 
 Вернуться к началу: [`README.ru.md`](../README.ru.md)

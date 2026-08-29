@@ -160,7 +160,7 @@ flowchart TD
 
 ## Проверка на реальных системах
 
-SSAD сейчас задокументирована на двух существенно разных реальных системах.
+SSAD сейчас задокументирована на трёх существенно разных реальных системах.
 
 ### Aveli · product-shaped system
 
@@ -205,7 +205,36 @@ Evidence & Readiness
 Technical Projection
 ```
 
-Два application намеренно имеют разную структуру репозиториев.
+### Rebar AutoDim · host-application automation system
+
+**[branch-danya-dev/revit-rebar-autodim-analysis](https://github.com/branch-danya-dev/revit-rebar-autodim-analysis)**
+
+Этот application проверяет SSAD на системе, которая выполняется внутри Autodesk Revit и должна отделять host-owned validity/mechanics от plugin-owned analytical meaning.
+
+Компактный маршрут: **[`08-examples/revit-rebar-autodim/`](08-examples/revit-rebar-autodim/README.ru.md)**
+
+```text
+Host Boundary
+        ↓
+View-Space Geometry
+        ↓
+Semantic Reference
+        ↓
+Generated Output Ownership
+```
+
+Три application намеренно имеют разную структуру репозиториев:
+
+```text
+Aveli
+→ product-shaped ownership
+
+Enterprise Workplace Migration
+→ distributed transformation ownership
+
+Rebar AutoDim
+→ host-authority + generated-state ownership
+```
 
 > **Общая методология проявляется в reasoning model, а не в обязательном дереве директорий.**
 
@@ -234,7 +263,7 @@ SSAD сейчас находится в фазе **comparative validation и sta
 
 > **Новые концепты должны появляться из реальных аналитических friction points и evidence, а не из желания закончить классификацию.**
 
-Второй существенно отличающийся real-world application теперь завершён. Следующая validation-работа — сравнивать friction points между applications, продолжать проверку на значимых изменениях, стабилизировать терминологию/навигацию и завершить publication/release hygiene.
+Три контрастных real-world applications теперь покрывают product-shaped software, distributed enterprise transformation и host-application automation. Новые validation cases стоит добавлять только ради существенно другого непроверенного риска, а текущая работа должна фокусироваться на сравнении friction points, проверке значимых изменений, стабилизации терминологии/навигации и publication/release hygiene.
 
 ---
 

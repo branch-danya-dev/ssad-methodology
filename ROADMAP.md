@@ -21,7 +21,7 @@ Foundation
 → Examples
 ```
 
-Two materially different real-world applications are now documented:
+Three materially different real-world applications are now documented:
 
 ```text
 Aveli
@@ -29,9 +29,12 @@ Aveli
 
 Enterprise Workplace Migration
 → distributed enterprise transformation / existing-system migration
+
+Rebar AutoDim
+→ host-application automation inside Autodesk Revit
 ```
 
-The current phase is therefore **comparative validation and stabilization**: identify what remains stable across both systems, collect friction points and change the core only when evidence requires it.
+The current phase is therefore **comparative validation and stabilization**: identify what remains stable across all three system shapes, collect friction points and change the core only when evidence requires it.
 
 ## What v1.0 should mean
 
@@ -55,13 +58,15 @@ SSAD v1.0 should mean:
 - [x] At least one additional real-world system with a substantially different shape is documented as validation evidence.
 - [x] At least one integration-heavy or event-driven case tests cross-boundary reasoning.
 - [x] At least one existing-system / migration case tests Change Surface, compatibility and selective reopening.
+- [x] At least one host-application / embedded automation case tests host authority, representation adaptation, generated-state ownership and transaction-scoped failure boundaries.
 
 Validation evidence now includes:
 
 - [`08-examples/aveli/`](08-examples/aveli/) — product boundaries, access ownership and bounded offline trust;
-- [`08-examples/enterprise-workplace-migration/`](08-examples/enterprise-workplace-migration/) — distributed responsibility, readiness evidence, state decomposition, migration/change reasoning and ownership-aware technical projection.
+- [`08-examples/enterprise-workplace-migration/`](08-examples/enterprise-workplace-migration/) — distributed responsibility, readiness evidence, state decomposition, migration/change reasoning and ownership-aware technical projection;
+- [`08-examples/revit-rebar-autodim/`](08-examples/revit-rebar-autodim/) — host authority, context-dependent geometry interpretation, semantic target vs API representation, generated-output ownership and zone-level transaction isolation.
 
-The second application matters because it demonstrates that SSAD can produce a system-shaped repository that looks nothing like Aveli while preserving the same reasoning principles.
+The applications matter together because SSAD produces three visibly different system-shaped repositories while preserving the same reasoning principles.
 
 #### 3. Learning quality
 
@@ -98,21 +103,20 @@ The second application matters because it demonstrates that SSAD can produce a s
 ### P0 — compare, validate, do not expand
 
 1. keep using SSAD on meaningful changes in Aveli and other real systems;
-2. compare friction points between product-shaped and transformation-shaped applications;
+2. compare friction points across product-shaped, transformation-shaped and host-application systems;
 3. identify ambiguity, duplication and missing reasoning steps that repeat across cases;
 4. fix only issues supported by evidence.
 
 ### P1 — broaden validation only when it tests a new risk
 
-The second real-world application milestone is complete.
+The second-case generalization milestone and the host-application validation milestone are complete.
 
-A third case is useful only if it tests a materially new concern rather than adding another showcase.
+A new case is useful only if it tests a materially new concern rather than adding another showcase.
 
 Possible future validation shapes include:
 
-- strongly event-driven backend platform;
-- desktop or host-application plugin ecosystem;
-- integration-heavy internal service with versioned contracts;
+- strongly event-driven backend platform with ordering/replay concerns;
+- integration-heavy internal service with versioned contracts and compatibility pressure;
 - system with significant data migration or distributed consistency concerns.
 
 The question is no longer “do we have another case?” but:

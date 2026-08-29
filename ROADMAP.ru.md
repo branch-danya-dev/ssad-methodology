@@ -21,7 +21,7 @@ Foundation
 → Examples
 ```
 
-Теперь задокументированы два существенно разных real-world applications:
+Теперь задокументированы три существенно разных real-world applications:
 
 ```text
 Aveli
@@ -29,9 +29,12 @@ Aveli
 
 Enterprise Workplace Migration
 → distributed enterprise transformation / existing-system migration
+
+Rebar AutoDim
+→ host-application automation внутри Autodesk Revit
 ```
 
-Текущая фаза — **comparative validation и stabilization**: проверить, какие принципы остаются стабильными на обеих системах, собирать friction points и менять ядро только когда этого требует evidence.
+Текущая фаза — **comparative validation и stabilization**: проверить, какие принципы остаются стабильными на всех трёх формах систем, собирать friction points и менять ядро только когда этого требует evidence.
 
 ## Что должно означать v1.0
 
@@ -55,13 +58,15 @@ SSAD v1.0 должна означать:
 - [x] Добавлен хотя бы один дополнительный real-world кейс с существенно другой структурой.
 - [x] Хотя бы один integration-heavy или event-driven кейс проверяет cross-boundary reasoning.
 - [x] Хотя бы один existing-system / migration кейс проверяет Change Surface, compatibility и selective reopening.
+- [x] Хотя бы один host-application / embedded automation кейс проверяет host authority, representation adaptation, generated-state ownership и transaction-scoped failure boundaries.
 
 Validation evidence теперь включает:
 
 - [`08-examples/aveli/`](08-examples/aveli/) — product boundaries, access ownership и bounded offline trust;
-- [`08-examples/enterprise-workplace-migration/`](08-examples/enterprise-workplace-migration/) — distributed responsibility, readiness evidence, state decomposition, migration/change reasoning и ownership-aware technical projection.
+- [`08-examples/enterprise-workplace-migration/`](08-examples/enterprise-workplace-migration/) — distributed responsibility, readiness evidence, state decomposition, migration/change reasoning и ownership-aware technical projection;
+- [`08-examples/revit-rebar-autodim/`](08-examples/revit-rebar-autodim/) — host authority, context-dependent geometry interpretation, semantic target vs API representation, generated-output ownership и zone-level transaction isolation.
 
-Второй application важен потому, что SSAD создала для него system-shaped repository, совсем не похожий на Aveli, но сохранила те же reasoning principles.
+Три application важны вместе, потому что SSAD создаёт для них визуально разные system-shaped repositories, сохраняя одни и те же reasoning principles.
 
 #### 3. Качество обучения
 
@@ -98,21 +103,20 @@ Validation evidence теперь включает:
 ### P0 — сравнивать, проверять, не расширять
 
 1. продолжать применять SSAD к существенным изменениям Aveli и другим реальным системам;
-2. сравнивать friction points product-shaped и transformation-shaped applications;
+2. сравнивать friction points product-shaped, transformation-shaped и host-application systems;
 3. искать неоднозначности, дубли и отсутствующие reasoning steps, повторяющиеся между кейсами;
 4. исправлять только проблемы, подтверждённые evidence.
 
 ### P1 — расширять validation только ради нового риска
 
-Milestone второго real-world application выполнен.
+Milestone второго real-world application и milestone host-application validation выполнены.
 
-Третий кейс имеет смысл только если проверяет существенно новую проблему, а не добавляет ещё одну витрину.
+Новый кейс имеет смысл только если проверяет существенно новую проблему, а не добавляет ещё одну витрину.
 
 Возможные будущие формы validation:
 
-- strongly event-driven backend platform;
-- desktop или host-application plugin ecosystem;
-- integration-heavy internal service с versioned contracts;
+- strongly event-driven backend platform с ordering/replay concerns;
+- integration-heavy internal service с versioned contracts и compatibility pressure;
 - система со значимой data migration или distributed consistency.
 
 Вопрос теперь не «есть ли у нас ещё один кейс?», а:

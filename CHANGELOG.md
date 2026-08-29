@@ -2,7 +2,7 @@
 
 ## Unreleased — Reader-first methodology
 
-Completed the migration from the research-oriented SSAD structure to one active reader-first methodology tree and expanded real-world validation beyond a single system shape.
+Completed the migration from the research-oriented SSAD structure to one active reader-first methodology tree and expanded real-world validation across three materially different system shapes.
 
 ### Added
 
@@ -14,13 +14,25 @@ Completed the migration from the research-oriented SSAD structure to one active 
 - `06-change/` — impact analysis, compatibility and selective reopening;
 - `07-practice/` — task-based daily checklists;
 - `08-examples/aveli/` — product-shaped real-world validation through repository structure, access ownership and offline trust;
-- `08-examples/enterprise-workplace-migration/` — transformation-shaped real-world validation through responsibility structure, global-status decomposition, distributed readiness evidence and ownership-aware technical projection.
+- `08-examples/enterprise-workplace-migration/` — transformation-shaped real-world validation through responsibility structure, global-status decomposition, distributed readiness evidence and ownership-aware technical projection;
+- `08-examples/revit-rebar-autodim/` — host-application real-world validation through Revit authority boundaries, view-space geometry, semantic-vs-API references and generated-output ownership.
 
 ### Real-world validation
 
-The second materially different application validates SSAD against an enterprise workplace migration rather than a conventional software product.
+SSAD is now documented against three materially different real systems:
 
-It demonstrated that the same SSAD reasoning model can produce a different system-shaped knowledge architecture:
+```text
+Aveli
+→ product-shaped software system
+
+Enterprise Workplace Migration
+→ distributed enterprise transformation
+
+Rebar AutoDim
+→ host-application automation inside Autodesk Revit
+```
+
+The important result is not that the repositories look similar. They do not.
 
 ```text
 Aveli
@@ -28,9 +40,16 @@ Aveli
 
 Enterprise Workplace Migration
 → system / workplace / readiness / planning / execution / exceptions / integrations / technical-projection
+
+Rebar AutoDim
+→ system / execution-context / geometry / references / layout / annotations / regeneration / revit-boundary / evidence
 ```
 
-Important evidence from the enterprise application:
+The same reasoning model produced three different knowledge architectures.
+
+#### Enterprise migration evidence
+
+The enterprise application demonstrated that:
 
 - one global `migration_status` hid several independently owned state dimensions;
 - distributed cross-team evidence did not remove the need for one explicit readiness owner;
@@ -39,7 +58,20 @@ Important evidence from the enterprise application:
 - canonical ownership changed the synthetic REST and PostgreSQL projections, not only the documentation tree;
 - derived operational views could combine several owners without becoming a second source of truth.
 
-The roadmap now marks the materially different second case, integration-heavy cross-boundary validation and existing-system/migration validation criteria as completed.
+#### Rebar AutoDim evidence
+
+The host-application application demonstrated that:
+
+- a host application can own native validity and execution mechanics without owning the plugin's analytical decisions;
+- source model geometry and active-view context can have different owners while the plugin owns a derived canonical interpretation;
+- semantic dimension targets must be separated from Revit `Reference` representations;
+- API workarounds such as supporting detail geometry should realize existing meaning rather than become a new source of truth;
+- `NOT_APPLICABLE` output and failed native realization are different system outcomes;
+- plugin-generated annotation state has explicit ownership separate from source structural state;
+- one-zone transaction scope can represent a meaningful failure-isolation boundary;
+- repeated execution can be modeled as semantic convergence through full regeneration rather than element-ID preservation.
+
+The roadmap now also marks host-application / embedded automation validation as completed.
 
 ### Quality pass
 

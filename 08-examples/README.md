@@ -93,9 +93,45 @@ Technical Projection
 
 → [`Enterprise Workplace Migration · application`](enterprise-workplace-migration/README.md)
 
-## Why the two applications matter together
+### Rebar AutoDim · host-application automation system
 
-The value is not that both repositories look similar. They deliberately do not.
+Full repository:
+
+https://github.com/branch-danya-dev/revit-rebar-autodim-analysis
+
+Rebar AutoDim validates SSAD on a plugin that executes inside Autodesk Revit, consumes host-owned geometry and API capabilities, and produces its own regenerable native annotation state.
+
+Its responsibility areas emerged around a different set of system questions:
+
+```text
+system/
+execution-context/
+geometry/
+references/
+layout/
+annotations/
+regeneration/
+revit-boundary/
+evidence/
+```
+
+Compact application route:
+
+```text
+Host Boundary
+        ↓
+View-Space Geometry
+        ↓
+Semantic Reference
+        ↓
+Generated Output Ownership
+```
+
+→ [`Rebar AutoDim · application`](revit-rebar-autodim/README.md)
+
+## Why the three applications matter together
+
+The value is not that the repositories look similar. They deliberately do not.
 
 ```text
 Aveli
@@ -111,11 +147,20 @@ Enterprise migration
 → planning vs execution separation
 → exception/recovery paths
 → technical projection corrected by domain ownership
+
+Rebar AutoDim
+→ host-application boundary
+→ view-context-dependent geometry meaning
+→ semantic target vs API representation
+→ generated-state ownership
+→ transaction-scoped failure isolation
 ```
 
 The shared methodology appears in the reasoning model, not in a mandatory folder tree.
 
 > **Same analytical principles. Different system-shaped knowledge architecture.**
+
+The third application also adds a new kind of validation: a host can own native validity and execution mechanics without owning the plugin's analytical meaning.
 
 ## Main rule for applications
 
@@ -141,6 +186,9 @@ Want a software-product case?
 
 Want an enterprise migration / distributed-ownership case?
 → Enterprise Workplace Migration
+
+Want a host-application / plugin case?
+→ Rebar AutoDim
 ```
 
 Back to: [`README.md`](../README.md)
