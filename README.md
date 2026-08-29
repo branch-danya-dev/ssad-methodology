@@ -252,21 +252,6 @@ It answers a different question:
 
 ---
 
-## Project direction and contributions
-
-SSAD is now in a **comparative validation and stabilization** phase rather than a chapter-expansion phase.
-
-- Want to contribute? Read [`CONTRIBUTING.md`](CONTRIBUTING.md).
-- Want to see what “v1.0 ready” means? Read [`ROADMAP.md`](ROADMAP.md).
-
-The central rule for future development is simple:
-
-> **New concepts should be driven by real analytical friction and evidence, not by a desire to complete a taxonomy.**
-
-Three contrasting real-world applications now cover product-shaped software, distributed enterprise transformation and host-application automation. Further validation should be added only when it tests a materially different unresolved risk, while current work focuses on comparing friction points, validating meaningful changes, stabilizing terminology/navigation and completing publication/release hygiene.
-
----
-
 ## Active repository structure
 
 ```text
