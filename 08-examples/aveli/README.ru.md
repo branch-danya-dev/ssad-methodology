@@ -1,6 +1,6 @@
-# Aveli · сквозной пример SSAD
+# Aveli · сквозной application SSAD
 
-Aveli — основной real-world кейс SSAD.
+Aveli — первый real-world application SSAD, который проверяет методологию на product-shaped software system.
 
 Полный репозиторий системного анализа:
 
@@ -24,6 +24,8 @@ Aveli одновременно содержит:
 
 Поэтому кейс позволяет проверить не только структуру файлов, но и границы, ownership, контракты, состояния, доверие, отказы и сквозную согласованность.
 
+Aveli намеренно дополняется application [`Enterprise Workplace Migration`](../enterprise-workplace-migration/README.ru.md), где SSAD проверяется на распределённой enterprise transformation с совершенно другой responsibility structure.
+
 ## Структура кейса
 
 ```text
@@ -36,7 +38,7 @@ Aveli
    └─ как ограниченное доверие позволяет работать без постоянной сети
 ```
 
-## Как читать пример
+## Как читать application
 
 Каждый учебный срез отвечает на четыре вопроса:
 
@@ -47,8 +49,8 @@ Aveli
 4. Где находится каноническое описание?
 ```
 
-Примеры намеренно остаются компактными. Каноническая истина принадлежит репозиторию Aveli.
+Срезы намеренно остаются компактными. Каноническая истина принадлежит репозиторию Aveli.
 
-> **Example объясняет принцип. Canonical project knowledge остаётся у своего владельца.**
+> **Application объясняет принцип. Canonical project knowledge остаётся у своего владельца.**
 
 Начать: [`repository-structure.ru.md`](repository-structure.ru.md)
