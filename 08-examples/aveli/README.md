@@ -1,6 +1,6 @@
-# Aveli · end-to-end SSAD example
+# Aveli · end-to-end SSAD application
 
-Aveli is the primary real-world SSAD case.
+Aveli is the first real-world SSAD application and validates the methodology on a product-shaped software system.
 
 Full system-analysis repository:
 
@@ -23,6 +23,8 @@ Aveli includes:
 - end-to-end user and system flows.
 
 This makes it possible to validate not only folder structure, but boundaries, ownership, contracts, states, trust, failures and end-to-end consistency.
+
+Aveli is intentionally complemented by the [`Enterprise Workplace Migration`](../enterprise-workplace-migration/README.md) application, which tests SSAD on a distributed enterprise transformation with a very different responsibility structure.
 
 ## Case structure
 
@@ -49,6 +51,6 @@ Each slice answers four questions:
 
 Examples intentionally stay compact. Canonical truth remains in the Aveli repository.
 
-> **An example explains the principle. Canonical project knowledge remains with its owner.**
+> **An application explains the principle. Canonical project knowledge remains with its owner.**
 
 Start: [`repository-structure.md`](repository-structure.md)
