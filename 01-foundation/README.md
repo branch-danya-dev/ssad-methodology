@@ -6,6 +6,12 @@ This section explains **what SSAD is, which problem it solves, and why system kn
 
 Foundation is not a formal specification. It is the entry point into the way of thinking used by the rest of the methodology.
 
+## SSAD in one statement
+
+> **SSAD is a way to build and maintain system knowledge as a connected model of the real system rather than as a set of independent documents.**
+
+In practice, this means first establishing system boundaries, responsibility areas and owners; then placing canonical knowledge with the appropriate owners and reconnecting local models into a coherent system view. The approach helps answer basic working questions: **what is known, where it came from, who has the relevant authority, where the canonical answer lives, how knowledge is connected, and what must be revisited when the system changes**.
+
 ---
 
 ## 1. The problem
