@@ -17,6 +17,12 @@ from the first request and requirements to implementation, verification and curr
 > **SSAD is not about producing documents.**  
 > It is about solving system-analysis problems through the real delivery cycle, while documentation becomes the structured trace of that reasoning.
 
+## SSAD in one statement
+
+> **SSAD is a way to build and maintain system knowledge as a connected model of the real system rather than as a set of independent documents.**
+
+To do that, the analyst establishes system boundaries, responsibility areas and owners, places canonical knowledge with the appropriate owner, and reconnects local models into a coherent system view. The result makes it clear **what is known, where it came from, who is responsible for it, where the canonical answer lives, how knowledge is connected, and what must be revisited when the system changes**.
+
 ## The idea in one diagram
 
 ```mermaid
